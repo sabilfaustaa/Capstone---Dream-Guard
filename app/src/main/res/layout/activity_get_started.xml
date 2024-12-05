@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"
@@ -42,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/image"
-        android:src="@drawable/img2_vector"
+        android:src="@drawable/img_chat_vector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/title_onboarding"
+        android:text="@string/title_started"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="20sp"
@@ -69,7 +68,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:maxWidth="350dp"
-        android:text="@string/describe_onboarding"
+        android:text="@string/describe_started"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="16sp"
@@ -82,35 +81,16 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
         android:backgroundTint="@color/purple"
         android:fontFamily="@font/poppins_medium"
         android:minWidth="300dp"
         android:minHeight="60dp"
-        android:text="@string/button_login"
+        android:text="@string/button_started"
         android:textSize="16sp"
         app:cornerRadius="7dp"
         app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/signButton"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:minWidth="300dp"
-        android:minHeight="60dp"
-        android:text="@string/button_sign"
-        android:textColor="@color/gray"
-        android:textSize="16sp"
-        app:cornerRadius="7dp"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineHorizontal2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginButton"
-        app:strokeColor="@color/gray" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

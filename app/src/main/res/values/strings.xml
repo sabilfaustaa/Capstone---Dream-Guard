@@ -1,41 +1,38 @@
 <resources>
-    <string name="app_name">DreamGuard</string>
-    <string name="button_started">Let\'s get started</string>
-    <string name="image">Image</string>
-    <string name="title_welcome"> Welcome To DreamGuard</string>
-    <string name="desc_welcome">
-        To understand your sleep, please answer a few questions from us. Your honest answers will make the results more accurate. The information you provide will be used for our sleep analysis models, and your privacy will be strictly protected
-    </string>
-    <string name="register_login">Or register with</string>
-    <string name="login_legend">On login with</string>
-    <string name="already_have_account">Already have an account?</string>
-    <string name="not_have_account">Don\'t have an account?</string>
-    <string name="register">Register</string>
-    <string name="login">Login</string>
-    <string name="button_register">Register</string>
-    <string name="button_google">Google</string>
+    <string name="app_name">Dream Guard</string>
     <string name="button_login">Login</string>
-    <string name="button_sign_up">I\'m new, sign me up</string>
-    <string name="title_login">Sleep better, live better</string>
-    <string name="desc_login">Transform your nights with DreamGuard. Join us to improve your sleep quality and take control of your well-being</string>
-    <string name="id_forgot">Forgot\nPassword</string>
-    <string name="title_register_account">Register your\naccount</string>
-    <string name="desc_forgot_password">Enter your email address to reset password</string>
-    <string name="desc_register_account">Your journey to better sleep continues here</string>
-    <string name="label_email">Email address</string>
-    <string name="label_verify">Verify your email address</string>
-    <string name="label_name">Your name</string>
-    <string name="label_password">Password</string>
-    <string name="label_rePassword">Repeat password</string>
-    <string name="hover_email">dreamguard@gmail.com</string>
-    <string name="button_continue">Continue</string>
+    <string name="button_forgot">Continue</string>
     <string name="button_verify">Verify</string>
-    <string name="title_verify">Just follow the link we sent to:</string>
-    <string name="time">Resend 00:00</string>
-    <string name="id_verify">Almost\nthere!</string>
-    <string name="desc_verify">One more step to go</string>
-    <string name="desc_forgot">Enter your email address to reset password</string>
-
-
-    <string name="dreamguard_logo">Dreamguard Logo</string>
+    <string name="button_started">Let’s get started</string>
+    <string name="button_register">Register</string>
+    <string name="button_sign">I’m new, sign me up</string>
+    <string name="button_google">Google</string>
+    <string name="image">image</string>
+    <string name="title_onboarding">Sleep better, live better</string>
+    <string name="title_started">Welcome to DreamGuard</string>
+    <string name="describe_onboarding">Transform your nights with DreamGuard. Join us to improve your sleep quality and take control of your well-being</string>
+    <string name="describe_started">To understand your sleep, please answer a few questions from us. Your honest answers will make the results more accurate. The information you provide will be used for our sleep analysis models, and your privacy will be strictly protected</string>
+    <string name="title_login">Log in to your\naccount</string>
+    <string name="title_register">Register your\naccount</string>
+    <string name="title_forgot">Forgot\npassword</string>
+    <string name="title_verify">Almost\nthere!</string>
+    <string name="describe_forgot">Enter your email address to reset password</string>
+    <string name="describe_verify">One more step to go</string>
+    <string name="describe_login">Stay connected to your sleep health journey</string>
+    <string name="describe_register">Your journey to better sleep continues here</string>
+    <string name="label_email">Email address</string>
+    <string name="label_name">Your name</string>
+    <string name="label_repassword">Repeat Password</string>
+    <string name="text_verify">Verify your email address</string>
+    <string name="text_information_email">Just follow the link we sent to:</string>
+    <string name="text_email">dreamguard@gmail.com</string>
+    <string name="text_verify_information">If you doesn’t receive an email you can resend the verification email in 0:59</string>
+    <string name="label_password">Password</string>
+    <string name="link_login">Don’t have an account?</string>
+    <string name="link_register">Already have an account?</string>
+    <string name="link_register2">Login</string>
+    <string name="link_login2">Register</string>
+    <string name="link_forgot">Forgot Password?</string>
+    <string name="legend">Or login with</string>
+    <string name="legend_register">Or register with</string>
 </resources>

@@ -18,8 +18,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            val email = binding.inputEmail.text.toString().trim()
-            val password = binding.inputPassword.text.toString().trim()
+            val email = binding.emailEditText.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Email and Password cannot be empty", Toast.LENGTH_SHORT).show()

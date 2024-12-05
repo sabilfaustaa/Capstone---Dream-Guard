@@ -10,7 +10,7 @@
         android:layout_width="240dp"
         android:layout_height="100dp"
         android:src="@drawable/dreamguard_logo"
-        android:contentDescription="@string/dreamguard_logo"
+        android:contentDescription="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

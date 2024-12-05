@@ -1,170 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/curved_background"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/frame" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow" />
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/title_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/title_register"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <!-- Label dan Input 1 -->
         <TextView
+            android:id="@+id/desc_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/describe_register"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_register" />
+
+        <!-- Form Input -->
+
+        <TextView
+            android:id="@+id/nameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/label_name"
             android:textColor="@color/gray"
-            android:textSize="16sp" />
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/banner" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameEditTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/label_name"
-            app:startIconContentDescription="@string/label_name"
-            app:startIconDrawable="@drawable/icon_email">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameLabel"
+            app:startIconDrawable="@drawable/person_logo">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_full_name"
+                android:id="@+id/nameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Label dan Input 2 -->
         <TextView
+            android:id="@+id/emailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/label_email"
             android:textColor="@color/gray"
-            android:textSize="16sp" />
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameEditTextLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailEditTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/hover_email"
-            app:startIconContentDescription="@string/label_name"
-            app:startIconDrawable="@drawable/icon_email">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailLabel"
+            app:startIconDrawable="@drawable/email_logo">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_email"
+                android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <!-- Label dan Input 4 -->
         <TextView
+            android:id="@+id/passwordLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/label_password"
             android:textColor="@color/gray"
-            android:textSize="16sp" />
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordEditTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/label_password"
-            app:endIconContentDescription="Toggle password visibility"
-            app:endIconDrawable="@drawable/icon_eyes_off_outlined"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/icon_password">
+            app:endIconDrawable="@drawable/icon_eyes_off"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordLabel"
+            app:startIconDrawable="@drawable/password_icon">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_password"
+                android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Label dan Input 5 -->
         <TextView
+            android:id="@+id/repasswordLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/label_rePassword"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:text="@string/label_repassword"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordEditTextLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/repasswordEditTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/label_password"
-            app:endIconContentDescription="Toggle password visibility"
-            app:endIconDrawable="@drawable/icon_eyes_off_outlined"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/icon_password">
+            app:endIconDrawable="@drawable/icon_eyes_off"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repasswordLabel"
+            app:startIconDrawable="@drawable/password_icon">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_password_again"
+                android:id="@+id/repasswordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Button Submit -->
         <Button
-            android:id="@+id/register_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/purple"
-            android:fontFamily="@font/poppins_medium"
-            android:minHeight="55dp"
-            android:text="@string/button_register"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:cornerRadius="7dp" />
-
-        <LinearLayout
+            android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/purple"
+            android:minWidth="380dp"
+            android:minHeight="60dp"
+            android:text="@string/button_register"
+            app:cornerRadius="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repasswordEditTextLayout" />
+
+        <LinearLayout
+            android:id="@+id/legend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registerButton">
 
             <!-- Left line -->
             <View
@@ -180,7 +243,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/register_login"
+                android:text="@string/legend"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -192,41 +255,42 @@
                 android:background="@color/gray" />
         </LinearLayout>
 
-
         <Button
-            android:id="@+id/registerGoogle_button"
-            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
+            android:id="@+id/registerButtonGoogle"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_medium"
-            android:minHeight="55dp"
-            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:minWidth="380dp"
+            android:minHeight="60dp"
             android:text="@string/button_google"
             android:textColor="@color/gray"
-            android:textSize="16sp"
             app:cornerRadius="7dp"
-            app:icon="@drawable/icon_google"
+            app:icon="@drawable/devicon_google"
             app:iconGravity="textStart"
             app:iconPadding="16dp"
             app:iconSize="24dp"
-            app:iconTint="@null" />
+            app:iconTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/legend"
+            app:strokeColor="@color/gray" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/already_have_account"
+                android:text="@string/link_register"
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
@@ -237,14 +301,13 @@
                 android:layout_marginStart="4dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/login"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/link_register2"
                 android:textColor="@color/purple"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
-    </LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-

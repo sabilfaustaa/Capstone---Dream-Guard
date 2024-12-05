@@ -30,10 +30,10 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.registerButton.setOnClickListener {
-            val name = binding.inputFullName.text.toString()
-            val email = binding.inputEmail.text.toString()
-            val password = binding.inputPassword.text.toString()
-            val rePassword = binding.inputPasswordAgain.text.toString()
+            val name = binding.nameEditText.text.toString()
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+            val rePassword = binding.repasswordEditText.text.toString()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
