@@ -7,6 +7,7 @@ import com.capstone.dreamguard.databinding.ActivitySplashBinding
 import com.android.dreamguard.data.local.UserPreferences
 import com.android.dreamguard.ui.onboarding.OnboardingActivity
 import com.android.dreamguard.ui.home.HomeActivity
+import com.android.dreamguard.ui.main.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
         userPreferences = UserPreferences(this)
 
         CoroutineScope(Dispatchers.Main).launch {
-            val token = withContext(Dispatchers.IO) { userPreferences.getUserToken() }
+            val token = withContext(Dispatchers.IO) { userPreferences.getToken() }
             if (!token.isNullOrEmpty()) {
                 navigateToHome()
             } else {
@@ -36,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val intent = Intent(this, HomeActivity::class.java).apply {
+        val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         startActivity(intent)

@@ -1,23 +1,26 @@
 package com.android.dreamguard.data.local
 
 import android.content.Context
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
+import android.content.SharedPreferences
 
 class UserPreferences(context: Context) {
-    private val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    private val preferences: SharedPreferences =
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
-    fun saveUserToken(token: String) {
-        sharedPreferences.edit().putString("user_token", token).apply()
+    companion object {
+        private const val PREF_NAME = "user_prefs"
+        private const val KEY_TOKEN = "token"
     }
 
-    fun getUserToken(): String? {
-        return sharedPreferences.getString("user_token", null)
+    fun saveToken(token: String) {
+        preferences.edit().putString(KEY_TOKEN, token).apply()
     }
 
-    fun clearUserData() {
-        sharedPreferences.edit().clear().apply()
+    fun getToken(): String? {
+        return preferences.getString(KEY_TOKEN, null)
+    }
+
+    fun clear() {
+        preferences.edit().clear().apply()
     }
 }

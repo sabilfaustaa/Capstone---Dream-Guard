@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.android.dreamguard.ui.auth.AuthViewModel
 import com.android.dreamguard.ui.main.MainActivity
+import com.android.dreamguard.ui.onboarding.OnboardingActivity
 import com.capstone.dreamguard.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -29,6 +31,10 @@ class LoginActivity : AppCompatActivity() {
             viewModel.login(email, password)
         }
 
+        binding.toolbar.setOnClickListener {
+            navigateToOnBoarding()
+        }
+
         observeViewModel()
     }
 
@@ -49,6 +55,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
+    private fun navigateToOnBoarding() {
+        val intent = Intent(this, OnboardingActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

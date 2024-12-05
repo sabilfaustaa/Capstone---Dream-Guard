@@ -33,6 +33,7 @@
         <activity android:name="com.android.dreamguard.ui.onboarding.OnboardingActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.LoginActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.RegisterActivity" />
+        <activity android:name="com.android.dreamguard.ui.main.MainActivity" />
     </application>
 
 </manifest>

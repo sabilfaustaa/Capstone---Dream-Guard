@@ -1,7 +1,6 @@
 package com.android.dreamguard.data.repository
 
 import com.android.dreamguard.data.remote.api.ApiService
-import com.android.dreamguard.data.remote.models.LoginResponse
 import com.android.dreamguard.data.remote.models.RegisterResponse
 import retrofit2.Response
 
