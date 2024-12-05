@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "257341063998",
+    "project_id": "capstone-project-dreamguard",
+    "storage_bucket": "capstone-project-dreamguard.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257341063998:android:1ed4bb623b4489850c226f",
+        "android_client_info": {
+          "package_name": "com.capstone.dreamguard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257341063998-sq1m5b7vdi3oqontt32rcik19fgognlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVwChW7Y3084ZUjDQiJLeaQETEUlZHJR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257341063998-sq1m5b7vdi3oqontt32rcik19fgognlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,14 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.android.dreamguard"
+    namespace = "com.capstone.dreamguard"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.android.dreamguard"
+        applicationId = "com.capstone.dreamguard"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -36,6 +38,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -44,6 +47,7 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.3.1")
     implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.4.0-alpha04")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -59,4 +63,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.preference)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson.converter)
+    implementation(libs.okhttp.logging.interceptor)
+
+    implementation(libs.firebase.bom)
+    implementation(libs.firebase.auth.ktx)
 }

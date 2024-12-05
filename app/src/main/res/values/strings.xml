@@ -35,5 +35,7 @@
     <string name="id_verify">Almost\nthere!</string>
     <string name="desc_verify">One more step to go</string>
     <string name="desc_forgot">Enter your email address to reset password</string>
-    
+
+
+    <string name="dreamguard_logo">Dreamguard Logo</string>
 </resources>

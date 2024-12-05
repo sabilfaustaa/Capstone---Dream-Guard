@@ -22,37 +22,7 @@
         android:theme="@style/Theme.DreamGuard"
         tools:targetApi="31">
         <activity
-            android:name=".login_page"
-            android:banner="@drawable/app_icon_your_company"
-            android:exported="true"
-            android:icon="@drawable/app_icon_your_company"
-            android:label="@string/title_activity_login_page"
-            android:logo="@drawable/app_icon_your_company"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".DetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PlaybackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BrowseErrorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".login"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:resizeableActivity="true"
-            android:theme="@style/Theme.DreamGuard.NoActionBar"
-            tools:targetApi="24" />
-        <activity
-            android:name=".MainActivity"
+            android:name="com.android.dreamguard.ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.android.dreamguard.ui.onboarding.OnboardingActivity" />
+        <activity android:name="com.android.dreamguard.ui.auth.LoginActivity" />
+        <activity android:name="com.android.dreamguard.ui.auth.RegisterActivity" />
     </application>
 
 </manifest>
