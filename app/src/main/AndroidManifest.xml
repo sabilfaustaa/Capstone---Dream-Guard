@@ -34,6 +34,8 @@
         <activity android:name="com.android.dreamguard.ui.auth.LoginActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.RegisterActivity" />
         <activity android:name="com.android.dreamguard.ui.main.MainActivity" />
+        <activity android:name="com.android.dreamguard.ui.auth.ForgotPasswordActivity" />
+        <activity android:name="com.android.dreamguard.ui.auth.VerificationActivity" />
     </application>
 
 </manifest>

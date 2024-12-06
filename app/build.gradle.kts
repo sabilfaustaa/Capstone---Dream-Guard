@@ -73,4 +73,5 @@ dependencies {
 
     implementation(libs.firebase.bom)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services.auth)
 }

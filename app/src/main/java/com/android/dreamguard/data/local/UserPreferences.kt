@@ -10,6 +10,7 @@ class UserPreferences(context: Context) {
     companion object {
         private const val PREF_NAME = "user_prefs"
         private const val KEY_TOKEN = "token"
+        private const val KEY_USER_EMAIL = "user_email"
     }
 
     fun saveToken(token: String) {
@@ -18,6 +19,14 @@ class UserPreferences(context: Context) {
 
     fun getToken(): String? {
         return preferences.getString(KEY_TOKEN, null)
+    }
+
+    fun saveUserEmail(email: String) {
+        preferences.edit().putString(KEY_USER_EMAIL, email).apply()
+    }
+
+    fun getUserEmail(): String? {
+        return preferences.getString(KEY_USER_EMAIL, null)
     }
 
     fun clear() {
