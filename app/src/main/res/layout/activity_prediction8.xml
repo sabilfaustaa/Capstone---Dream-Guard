@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.prediction.PredictionActivity">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -45,7 +44,7 @@
             android:focusable="true"
             android:fontFamily="@font/poppins_semi_bold"
             android:letterSpacing="0.1"
-            android:text="@string/one"
+            android:text="@string/eight"
             android:textColor="@color/purple"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -53,11 +52,12 @@
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/quest_gender"
+        android:maxWidth="340dp"
+        android:text="@string/quest_daily"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="20sp"
@@ -65,39 +65,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
 
-    <Button
-        android:id="@+id/cardButtonFemale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple"
-        android:drawableTop="@drawable/female"
-        android:fontFamily="@font/poppins_medium"
-        android:minHeight="235dp"
-        android:text="@string/female_button"
-        android:textColor="@color/white"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/question"
-        tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/cardButtonMale"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/ActText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:drawableTop="@drawable/male"
-        android:fontFamily="@font/poppins_medium"
-        android:minHeight="235dp"
-        android:text="@string/male_button"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/embed_daily"
+        android:textAlignment="center"
         android:textColor="@color/gray"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@id/describe_prediction"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonWrapperStr"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@id/question" />
+
+    <LinearLayout
+        android:id="@+id/buttonWrapperStr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ActText">
+
+        <Button
+            android:id="@+id/iconMinButtonStr"
+            style="?attr/materialIconButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal"
+            android:contentDescription="@string/image"
+            app:icon="@drawable/icon_min" />
+
+        <TextView
+            android:id="@+id/ageNumberStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/embed_age_num"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/iconPlusButtonStr"
+            style="?attr/materialIconButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal"
+            android:contentDescription="@string/image"
+            app:icon="@drawable/icon_plus" />
+
+    </LinearLayout>
 
 
     <TextView
@@ -106,7 +127,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:maxWidth="340dp"
-        android:text="@string/describe_prediction_gender"
+        android:text="@string/describe_steps"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="18sp"
@@ -118,7 +139,7 @@
         android:id="@+id/predictButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/purple"
         android:fontFamily="@font/poppins_medium"
         android:minWidth="360dp"
@@ -129,7 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/describe_prediction" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stepperRecyclerView"
@@ -146,21 +166,12 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.7"
+        app:layout_constraintGuide_percent="0.55"
         app:layout_constraintStart_toStartOf="parent" />
 
 
