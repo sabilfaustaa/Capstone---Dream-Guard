@@ -2,7 +2,8 @@ package com.android.dreamguard.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -28,31 +29,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupGoogleSignIn()
-
-        binding.loginButton.setOnClickListener {
-            val email = binding.emailEditText.text.toString().trim()
-            val password = binding.passwordEditText.text.toString().trim()
-
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Email and Password cannot be empty", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            viewModel.login(email, password)
-        }
-
-        binding.googleButton.setOnClickListener {
-            signInWithGoogle()
-        }
-
-        binding.forgotPassword.setOnClickListener {
-            navigateToForgotPasword()
-        }
-
-        binding.toolbar.setNavigationOnClickListener {
-            navigateToOnBoarding()
-        }
-
+        setupListeners()
         observeViewModel()
     }
 
@@ -64,42 +41,78 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
-    private val googleSignInLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                handleGoogleSignInResult(task)
+    private fun setupListeners() {
+        binding.loginButton.setOnClickListener {
+            val email = binding.emailEditText.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                showSnackbar("Email and Password cannot be empty")
+                return@setOnClickListener
+            }
+
+            showLoading(true)
+            viewModel.login(email, password)
+        }
+
+        binding.googleButton.setOnClickListener {
+            showLoading(true)
+            signInWithGoogle()
+        }
+
+        binding.forgotPassword.setOnClickListener {
+            navigateToForgotPassword()
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            navigateToOnBoarding()
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.authState.observe(this) { isSuccess ->
+            showLoading(false)
+            if (isSuccess) {
+                showSnackbar("Login Successful")
+                navigateToMain()
             }
         }
+
+        viewModel.errorMessage.observe(this) { errorMessage ->
+            showLoading(false)
+            if (!errorMessage.isNullOrEmpty()) {
+                showSnackbar(errorMessage)
+            }
+        }
+    }
 
     private fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         googleSignInLauncher.launch(signInIntent)
     }
 
-    private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+    private val googleSignInLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                handleGoogleSignInResult(task)
+            } else {
+                showLoading(false)
+                showSnackbar("Google Sign-In was canceled")
+            }
+        }
+
+    private fun handleGoogleSignInResult(completedTask: com.google.android.gms.tasks.Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             if (account != null) {
+                Log.d("GoogleSignIn", "Account ID Token: ${account.idToken}")
                 viewModel.googleSignIn(account.idToken ?: "")
             }
         } catch (e: ApiException) {
-            Toast.makeText(this, "Google Sign-In failed: ${e.statusCode}", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun observeViewModel() {
-        viewModel.authState.observe(this) { isSuccess ->
-            if (isSuccess) {
-                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                navigateToMain()
-            }
-        }
-
-        viewModel.errorMessage.observe(this) { errorMessage ->
-            if (!errorMessage.isNullOrEmpty()) {
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-            }
+            showLoading(false)
+            Log.e("GoogleSignIn", "Sign-In Failed: ${e.statusCode}")
+            showSnackbar("Google Sign-In failed: ${e.statusCode}")
         }
     }
 
@@ -110,17 +123,31 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-        private fun navigateToForgotPasword() {
-            val intent = Intent(this, ForgotPasswordActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
+    private fun navigateToForgotPassword() {
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
+        startActivity(intent)
+    }
 
     private fun navigateToOnBoarding() {
         val intent = Intent(this, OnboardingActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loginButton.text = ""
+            binding.googleButton.isEnabled = false
+            binding.loginButton.isEnabled = false
+            binding.buttonLoading.visibility = View.VISIBLE
+        } else {
+            binding.loginButton.text = getString(R.string.button_login)
+            binding.googleButton.isEnabled = true
+            binding.loginButton.isEnabled = true
+            binding.buttonLoading.visibility = View.GONE
+        }
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }

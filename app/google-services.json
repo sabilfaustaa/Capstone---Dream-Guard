@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "257341063998-675iqc00vg6tvgf9n5juim5q8q26nqdo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.dreamguard",
+            "certificate_hash": "de83e25f6bedffd74ba694a818af5eba48b1e899"
+          }
+        },
+        {
           "client_id": "257341063998-sq1m5b7vdi3oqontt32rcik19fgognlh.apps.googleusercontent.com",
           "client_type": 3
         }

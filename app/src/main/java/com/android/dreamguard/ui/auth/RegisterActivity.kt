@@ -3,9 +3,9 @@ package com.android.dreamguard.ui.auth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.android.dreamguard.data.local.UserPreferences
 import com.capstone.dreamguard.databinding.ActivityRegisterBinding
@@ -49,24 +49,26 @@ class RegisterActivity : AppCompatActivity() {
             val rePassword = binding.repasswordEditText.text.toString()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                showSnackbar("Please fill all fields")
                 return@setOnClickListener
             }
 
             if (password != rePassword) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                showSnackbar("Passwords do not match")
                 return@setOnClickListener
             }
 
+            showLoading(true)
             registerUserWithFirebase(name, email, password)
         }
 
-        binding.toolbar.setNavigationOnClickListener  {
-            navigateToOnBoarding()
+        binding.registerButtonGoogle.setOnClickListener {
+            showLoading(true)
+            signInWithGoogle()
         }
 
-        binding.registerButtonGoogle.setOnClickListener {
-            signInWithGoogle()
+        binding.toolbar.setNavigationOnClickListener {
+            navigateToOnBoarding()
         }
     }
 
@@ -79,14 +81,15 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private val googleSignInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             val account = task.getResult(Exception::class.java)
             account?.let {
                 authenticateWithFirebase(it)
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Google sign-in failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            showLoading(false)
+            showSnackbar("Google sign-in failed: ${e.message}")
         }
     }
 
@@ -103,11 +106,11 @@ class RegisterActivity : AppCompatActivity() {
                 val firebaseUser = authResult.user ?: throw Exception("Authentication failed")
                 val token = firebaseUser.getIdToken(true).await().token ?: throw Exception("Token retrieval failed")
 
-//                saveToPreferences(firebaseUser.email ?: "", token)
-
+                showLoading(false)
                 navigateToMain()
             } catch (e: Exception) {
-                Toast.makeText(this@RegisterActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                showLoading(false)
+                showSnackbar("Error: ${e.message}")
             }
         }
     }
@@ -122,11 +125,10 @@ class RegisterActivity : AppCompatActivity() {
 
                 val token = firebaseUser.getIdToken(true).await().token ?: throw Exception("Token retrieval failed")
 
-//                saveToPreferences(email, token)
-
                 sendTokenToBackend(email, password, token)
             } catch (e: Exception) {
-                Toast.makeText(this@RegisterActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                showLoading(false)
+                showSnackbar("Error: ${e.message}")
             }
         }
     }
@@ -138,14 +140,16 @@ class RegisterActivity : AppCompatActivity() {
                     authRepository.registerNewUser(token, email, password)
                 }
 
+                showLoading(false)
                 if (response.isSuccessful) {
-                    Toast.makeText(this@RegisterActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
+                    showSnackbar("Registration successful!")
                     navigateToMain()
                 } else {
-                    Toast.makeText(this@RegisterActivity, "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    showSnackbar("Registration failed: ${response.message()}")
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@RegisterActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                showLoading(false)
+                showSnackbar("Error: ${e.message}")
             }
         }
     }
@@ -164,8 +168,21 @@ class RegisterActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun saveToPreferences(email: String, token: String) {
-        userPreferences.saveUserEmail(email)
-        userPreferences.saveToken(token)
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.registerButton.text = ""
+            binding.registerButton.isEnabled = false
+            binding.registerButtonGoogle.isEnabled = false
+            binding.loadingProgressBar.visibility = View.VISIBLE
+        } else {
+            binding.registerButton.text = getString(R.string.button_register)
+            binding.registerButton.isEnabled = true
+            binding.registerButtonGoogle.isEnabled = true
+            binding.loadingProgressBar.visibility = View.GONE
+        }
+    }
+
+    private fun showSnackbar(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
