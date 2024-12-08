@@ -45,6 +45,13 @@
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction7" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction8" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction9" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityAnalyzing" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityResultNoSleepDisorder" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityResultNoSleepDisorderUnder8" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityResultNoSleepDisorderStress" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityResultNoSleepDisorderUnderStress" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityResultSleepApnea" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityResultInsomnia" />
     </application>
 
 </manifest>
