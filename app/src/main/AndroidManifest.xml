@@ -36,6 +36,15 @@
         <activity android:name="com.android.dreamguard.ui.main.MainActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.ForgotPasswordActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.VerificationActivity" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction2" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction3" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction4" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction5" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction6" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction7" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction8" />
+        <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction9" />
     </application>
 
 </manifest>

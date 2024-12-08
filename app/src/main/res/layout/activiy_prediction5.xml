@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".ui.prediction.PredictionActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -45,7 +45,7 @@
             android:focusable="true"
             android:fontFamily="@font/poppins_semi_bold"
             android:letterSpacing="0.1"
-            android:text="@string/one"
+            android:text="@string/five"
             android:textColor="@color/purple"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -53,11 +53,12 @@
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/quest_gender"
+        android:maxWidth="340dp"
+        android:text="@string/quest_occupation"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="20sp"
@@ -65,39 +66,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
 
-    <Button
-        android:id="@+id/cardButtonFemale"
+
+    <TextView
+        android:id="@+id/ageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple"
-        android:drawableTop="@drawable/female"
-        android:fontFamily="@font/poppins_medium"
-        android:minHeight="235dp"
-        android:text="@string/female_button"
-        android:textColor="@color/white"
-        app:cornerRadius="18dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/embed_occupation"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/question"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question" />
 
-    <Button
-        android:id="@+id/cardButtonMale"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:drawableTop="@drawable/male"
-        android:fontFamily="@font/poppins_medium"
-        android:minHeight="235dp"
-        android:text="@string/male_button"
-        android:textColor="@color/gray"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@id/describe_prediction"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        android:hint="@string/selectOccupation"
+        android:minWidth="280dp"
+        android:textColorHint="@color/black"
+        app:boxBackgroundColor="@color/teal"
+        app:boxStrokeColor="@color/teal"
+        app:cornerRadius="7dp"
+        app:dropDownBackgroundTint="@color/teal"
+        app:endIconDrawable="@drawable/icon_arrow_down"
+        app:endIconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@id/ageText">
+
+        <AutoCompleteTextView
+            android:id="@+id/exposedDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="none"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
@@ -106,7 +118,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:maxWidth="340dp"
-        android:text="@string/describe_prediction_gender"
+        android:text="@string/describe_occupation"
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textSize="18sp"
@@ -130,7 +142,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/describe_prediction" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stepperRecyclerView"
         android:layout_width="match_parent"
@@ -144,15 +155,6 @@
         tools:ignore="SpeakableTextPresentCheck"
         tools:listitem="@layout/item_stepper" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"

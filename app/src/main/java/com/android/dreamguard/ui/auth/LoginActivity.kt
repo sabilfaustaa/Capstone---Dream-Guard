@@ -45,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
             signInWithGoogle()
         }
 
-
         binding.forgotPassword.setOnClickListener {
             navigateToForgotPasword()
         }
@@ -111,12 +110,12 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun navigateToForgotPasword() {
-        val intent = Intent(this, ForgotPasswordActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
-    }
+        private fun navigateToForgotPasword() {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
 
     private fun navigateToOnBoarding() {
         val intent = Intent(this, OnboardingActivity::class.java)

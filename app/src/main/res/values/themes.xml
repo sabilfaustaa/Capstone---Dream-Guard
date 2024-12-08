@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.DreamGuard" parent="Base.Theme.DreamGuard" />
+    <style name="Theme.DreamGuard" parent="Theme.Material3.Light.NoActionBar" />
 </resources>

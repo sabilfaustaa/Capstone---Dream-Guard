@@ -103,7 +103,7 @@ class RegisterActivity : AppCompatActivity() {
                 val firebaseUser = authResult.user ?: throw Exception("Authentication failed")
                 val token = firebaseUser.getIdToken(true).await().token ?: throw Exception("Token retrieval failed")
 
-                saveToPreferences(firebaseUser.email ?: "", token)
+//                saveToPreferences(firebaseUser.email ?: "", token)
 
                 navigateToMain()
             } catch (e: Exception) {
@@ -122,7 +122,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 val token = firebaseUser.getIdToken(true).await().token ?: throw Exception("Token retrieval failed")
 
-                saveToPreferences(email, token)
+//                saveToPreferences(email, token)
 
                 sendTokenToBackend(email, password, token)
             } catch (e: Exception) {

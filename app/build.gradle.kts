@@ -74,4 +74,8 @@ dependencies {
     implementation(libs.firebase.bom)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
+
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.task.vision)
+
 }

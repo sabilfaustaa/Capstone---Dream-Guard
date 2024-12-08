@@ -2,6 +2,7 @@
     <string name="app_name">Dream Guard</string>
     <string name="button_login">Login</string>
     <string name="button_forgot">Continue</string>
+    <string name="button_predict">Continue</string>
     <string name="button_verify">Verify</string>
     <string name="button_started">Let’s get started</string>
     <string name="button_register">Register</string>
@@ -19,6 +20,9 @@
     <string name="describe_forgot">Enter your email address to reset password</string>
     <string name="describe_verify">One more step to go</string>
     <string name="describe_login">Stay connected to your sleep health journey</string>
+    <string name="describe_prediction_gender">In order to provide a suitable result for you, we need to know your gender</string>
+    <string name="describe_prediction_age">In order to provide a suitable result for you, we need to know your age</string>
+    <string name="describe_prediction_hour">In order to provide a suitable result for you, we need to know how many hours you sleep a day</string>
     <string name="describe_register">Your journey to better sleep continues here</string>
     <string name="label_email">Email address</string>
     <string name="label_name">Your name</string>
@@ -26,13 +30,107 @@
     <string name="text_verify">Verify your email address</string>
     <string name="text_information_email">Just follow the link we sent to:</string>
     <string name="text_email">dreamguard@gmail.com</string>
-    <string name="text_verify_information">If you don’t receive an email you can resend the verification email in %1$s seconds</string>
+    <string name="text_verify_information">If you doesn’t receive an email you can resend the verification email in 0:59</string>
     <string name="label_password">Password</string>
+    <string name="question">QUESTION</string>
     <string name="link_login">Don’t have an account?</string>
     <string name="link_register">Already have an account?</string>
     <string name="link_register2">Login</string>
+    <string name="male_button">Male</string>
+    <string name="female_button">Female</string>
+    <string name="one">1/9</string>
+    <string name="two">2/9</string>
+    <string name="tree">3/9</string>
+    <string name="four">4/9</string>
+    <string name="five">5/9</string>
+    <string name="six">6/9</string>
+    <string name="seven">7/9</string>
+    <string name="eight">8/9</string>
+    <string name="nine">9/9</string>
+    <string name="quest_gender">Which one are you?</string>
+    <string name="quest_age">How old are you?</string>
+    <string name="quest_hour_sleep">How many hours do you \nsleep a day?</string>
+    <string name="quest_scale_sleep">On a scale of 1 to 10, what is your sleep quality?</string>
+    <string name="quest_scale_stress">On a scale of 1 to 10, what is \nyour activity and stress level?</string>
+    <string name="quest_scale_data">What is your weight (kg) \nand height (cm)?</string>
+    <string name="quest_daily">How many daily steps do you take in a day?</string>
+    <string name="quest_heart_rate">What is your current heart rate, systolic blood pressure, and diastolic blood pressure?</string>
+    <string name="quest_occupation">What is your current occupation?</string>
     <string name="link_login2">Register</string>
     <string name="link_forgot">Forgot Password?</string>
     <string name="legend">Or login with</string>
     <string name="legend_register">Or register with</string>
+    <string name="embed_age">I am </string>
+    <string name="embed_sleep">I sleep </string>
+    <string name="embed_quality">My sleep quality is:</string>
+    <string name="embed_stress">My stress level is:</string>
+    <string name="embed_height">My height is:</string>
+    <string name="embed_act">My activity level is:</string>
+    <string name="embed_weight">My weight is:</string>
+    <string name="embed_daily">My daily steps a day is:</string>
+    <string name="embed_heart">My heart rate is:</string>
+    <string name="embed_blood">My systolic blood pressure is:</string>
+    <string name="embed_diastolic">My diastolic blood pressure is:</string>
+    <string name="embed_occupation">My current \noccupation is a:</string>
+    <string name="describe_quality">In order to provide a suitable result for you, we need to know your sleep quality on a scale of 1 to 10 (1 is poor, 10 is good)</string>
+    <string name="describe_stress">In order to provide a suitable result for you, we need to know your activity level (1 very low, 10 is very high) and stress level (1 is very low, 10 is very high)</string>
+    <string name="describe_data">In order to provide a suitable result for you, we need to know weight and height for calculating your BMI. For better accuracy, you can use a suitable tool for measuring</string>
+    <string name="describe_occupation">In order to provide a suitable result for you, we need to know your current occupation</string>
+    <string name="describe_steps">In order to provide a suitable result for you, we need to know your daily steps in a day. If you not keeping track, you can spend a day and use a pedometer or step counter app to count your step</string>
+    <string name="describe_heart_rate">In order to provide a suitable result for you, we need to know this information. You can use a tensimeter to find out all three. If you are confused about which one is which, you can see the instructions in this article</string>
+    <string name="embed_age2">years old</string>
+    <string name="embed_sleep2">hours a day</string>
+    <string name="embed_age_num"> 19 </string>
+    <string name="embed_kg">19 KG</string>
+    <string name="embed_hg">190 CM</string>
+    <string name="selectOccupation">Select Occupation</string>
+    <string name="profile">Profile</string>
+    <string name="predict">Predict</string>
+    <string name="home">Home</string>
+    <string name="analyzing">Analyzing your data to provide \npersonalized insights and \nrecommendations. . . . .</string>
+    <string name="predict_result">Prediction Result</string>
+    <string name="identify">We have Identified <font color="#7EE4E0">No Sleep Disorder</font> In Your Results</string>
+    <string name="result">In Your Results</string>
+    <string name="desc_result_predict">Great news! Our prediction shows that you don\'t have any sleep disorders. This means you\'re doing an awesome job taking care of your health and sleep! Keep it up and even aim to elevate your health and sleep to the next level to keep enjoying all the benefits for your body! Don\'t forget to maintain your sleep schedule of at least 8 hours and manage your stress levels.</string>
+    <string name="desc_result_tips">You\'re getting less than 8 hours of sleep, but don\'t worry! We\'ve got some fun tips for you!</string>
+    <string name="desc_result_stress">Your stress level is hitting 8–10, it\'s time to take some fun steps to boost your mood!</string>
+    <string name="tips_under_8_one">Create a cozy sleep space by keeping your room dark and cool—maybe add some soft warm lights for a nice touch!</string>
+    <string name="tips_under_8_two">Remember to unplug those gadgets at least 30 minutes before bed, as the blue light can mess with your sleep.</string>
+    <string name="tips_under_8_three">Wind down with a good book or some relaxing meditation to ease your mind! Be mindful of caffeine and heavy meals close to bedtime, and regular exercise can really help! </string>
+    <string name="tips_stress_one">Try deep breathing techniques, like the 4–7–8 method—inhale for 4 seconds, hold for 7, and exhale for 8!</string>
+    <string name="tips_stress_two">Schedule some "me time", whether it’s hanging out with friends or diving into a beloved hobby. </string>
+    <string name="tips_stress_three">Eating healthy foods can boost both your body and mind.</string>
+    <string name="tips_stress_four">Lastly, don’t hesitate to chat with someone about how you feel, whether it\'s a friend or a professional.</string>
+    <string name="desc_result_apnea">Our prediction indicates you may have sleep apnea. This condition can affect your overall well-being and energy levels. Don\'t worry—we\'re here to help you take positive steps towards better sleep health!</string>
+    <string name="desc_result_apnea2">Taking these steps, along with professional guidance, can enhance your sleep quality and overall health. Let’s embark on this journey to better sleep together—your best rest awaits!</string>
+    <string name="lifestyle_change">Lifestyle Change</string>
+    <string name="tips_apnea4">Create a Relaxing Atmosphere: Transform your room into a cozy haven—dark, quiet, and cool—for the ultimate relaxation.</string>
+    <string name="tips_apnea5">Regular Sleep Schedule: Stick to a regular sleep schedule to keep your body in sync and energized.</string>
+    <string name="tips_apnea6">CPAP Therapy: Discuss using a CPAP machine for open-airway bliss with your doctor.</string>
+    <string name="tips_apnea7">Oral Appliances: Consider handy oral devices to keep your airway open.</string>
+    <string name="tips_apnea">Weight Management: Embrace a healthy diet and fun exercises.</string>
+    <string name="tips_apnea2">Sleep Position: Sleep on your side to reduce airway obstruction.</string>
+    <string name="tips_apnea3">Avoid Alcohol and Sedatives: Skip alcohol and sedatives before bed for a refreshing sleep journey.</string>
+    <string name="tips_insomnia"><font color="#7165E3">Make your bedroom your sleep sanctuary: </font>it cool, quiet, and dark. And ditch the TV or screen time before bed—those blue lights mess with your sleep-wake cycle, making it harder to fall asleep.</string>
+    <string name="tips_insomnia4"><font color="#7165E3">Get moving, but not too late: </font>Aim for regular physical activity during the day—just make sure to wrap it up at least 5–6 hours before bed, so you don’t end up too wired to sleep.</string>
+    <string name="tips_insomnia3"><font color="#7165E3">Watch what you consume: </font>Avoid caffeine, nicotine, and alcohol close to bedtime. While alcohol might help you drift off initially, it can disrupt your sleep later in the night, leaving you wide awake.</string>
+    <string name="tips_insomnia5"><font color="#7165E3">No afternoon naps: </font>As tempting as they are, naps can mess with your ability to sleep well at night. Keep your nap short or skip it altogether.</string>
+    <string name="tips_insomnia6"><font color="#7165E3">Eat at regular times: </font>Avoid heavy meals right before bed. Your body will thank you for keeping your digestive system on a regular schedule.</string>
+    <string name="tips_insomnia7"><font color="#7165E3">Manage your stress: </font>Try winding down with a calming routine—read a book, listen to soothing music, or take a relaxing bath. If stress is still hanging around, yoga, meditation, or even acupuncture could do wonders.</string>
+    <string name="tips_insomnia8"><font color="#7165E3">Be mindful of meds: </font>Certain over-the-counter or prescription drugs can mess with your sleep. Talk to your doctor about alternatives if needed.</string>
+    <string name="tips_insomnia2"><font color="#7165E3">Stick to a sleep schedule: </font> Try to go to bed and wake up around the same time each day, even on weekends. Consistency is key to training your body’s internal clock.</string>
+    <string name="sleep_environment">Sleep Environment</string>
+    <string name="desc_result_insomnia">We\'ve noticed signs that you might be experiencing insomnia, which could be affecting your sleep quality. It\'s important to address this early to prevent it from impacting your overall health. Focus on establishing a consistent sleep routine, managing stress, and creating a relaxing bedtime environment. Taking steps now can help improve your sleep and well-being. Remember, you\'re not alone in this, and with the right strategies, you can get your sleep back on track!</string>
+    <string name="medical_options">Medical Options</string>
+    <string name="identify_insomnia">We have Identified <font color="#7EE4E0">Sleep Insomnia</font> In Your Results</string>
+    <string name="desc_result_cbt2">Here’s what CBT-I includes:</string>
+    <string name="desc_result_insomnia2">Here are some practical and easy-to-follow tips to help you reclaim your restful nights:</string>
+    <string name="desc_cbt">But if these tips don\'t do the trick, don’t worry—<font color="#7165E3">Cognitive Behavioral Therapy for Insomnia (CBT–I)</font> might be your next step! This 6–8 week program is designed to help you fall asleep faster and stay asleep longer, by teaching you practical sleep skills and helping you break the cycle of sleepless nights. Plus, it’s effective for long-term insomnia. <font color="#7165E3">CBT-I can be done by a doctor, nurse, or therapist;</font> you can do it in person, by telephone, or online.</string>
+    <string name="tips_cbt"><font color="#7165E3">Cognitive therapy: </font>Helps you stop stressing about not sleeping, which ironically makes it easier to sleep.</string>
+    <string name="tips_cbt2"><font color="#7165E3">Relaxation/meditation therapy: </font> you how to calm your mind and fall asleep faster.</string>
+    <string name="tips_cbt3"><font color="#7165E3">Sleep education: </font> you build good sleep habits that last.</string>
+    <string name="tips_cbt4"><font color="#7165E3">Sleep restriction therapy: </font> counterintuitive, but by limiting the time you spend in bed, you’ll gradually start to sleep better and longer.</string>
+    <string name="tips_cbt5"><font color="#7165E3">Stimulus control therapy: </font> you associate your bed with sleep, not tossing and turning. You’ll learn to only go to bed when sleepy, get up if you can’t sleep, and reserve your bed for sleeping (and, you know, other activities).</string>
+    <string name="text_result_insomnia2">Ready to sleep like a champ? Start with these tips, and if needed, give CBT-I a go! Your best sleep is just around the corner.</string>
+    <string name="prediction_result">The prediction value is: %s</string>
 </resources>
