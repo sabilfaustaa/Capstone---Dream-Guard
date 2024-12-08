@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.dreamguard.R
 import com.android.dreamguard.data.local.datastore.PredictionDataStore
+import com.android.dreamguard.ui.main.MainActivity
 import com.capstone.dreamguard.databinding.ActivityPredictionBinding
 import com.android.dreamguard.utils.PredictionModelManager
 import java.lang.Exception
@@ -18,20 +19,18 @@ class ActivityPrediction : AppCompatActivity() {
         binding = ActivityPredictionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        selectGender(PredictionDataStore.gender ?: "male")
+
         setupToolbar()
         setupListeners()
-
-//        try {
-//            val interpreter = PredictionModelManager.getInterpreter(this)
-//            println("Interpreter loaded successfully: $interpreter")
-//        } catch (e: Exception) {
-//            println("Error loading interpreter: ${e.message}")
-//        }
     }
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -78,8 +77,6 @@ class ActivityPrediction : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction2::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }

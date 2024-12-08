@@ -28,6 +28,12 @@ class ActivityAnalyzing : AppCompatActivity() {
         PredictionViewModelFactory(repository)
     }
 
+    private val disorderMapping = mapOf(
+        0 to "No Sleep Disorder",
+        1 to "Sleep Apnea",
+        2 to "Insomnia"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnalyzingBinding.inflate(layoutInflater)
@@ -41,6 +47,7 @@ class ActivityAnalyzing : AppCompatActivity() {
         viewModel.modelResponse.observe(this) { response ->
             response.modelUrl?.let { url ->
                 Log.d("ActivityAnalyzing", "Model URL: $url")
+                logInputData()
                 downloadAndPredict(url)
             } ?: run {
                 showError(response.message)
@@ -50,6 +57,23 @@ class ActivityAnalyzing : AppCompatActivity() {
         viewModel.error.observe(this) {
             showError(it)
         }
+    }
+
+    private fun logInputData() {
+        Log.d("ActivityAnalyzing", """
+            Input Data:
+            Gender: ${PredictionDataStore.gender}
+            Age: ${PredictionDataStore.age}
+            Hours of Sleep: ${PredictionDataStore.hoursOfSleep}
+            Occupation: ${PredictionDataStore.occupation}
+            Activity Level: ${PredictionDataStore.activityLevel}
+            Stress Level: ${PredictionDataStore.stressLevel}
+            Weight: ${PredictionDataStore.weight}
+            Height: ${PredictionDataStore.height}
+            Heart Rate: ${PredictionDataStore.heartRate}
+            Systolic: ${PredictionDataStore.systolic}
+            Diastolic: ${PredictionDataStore.diastolic}
+        """.trimIndent())
     }
 
     private fun downloadAndPredict(url: String) {
@@ -77,6 +101,8 @@ class ActivityAnalyzing : AppCompatActivity() {
         for (i in predictions.indices) {
             predictions[i] = outputBuffer.float
         }
+
+        Log.d("ActivityAnalyzing", "Prediction Results: ${predictions.joinToString(", ")}")
         return predictions
     }
 
@@ -87,7 +113,7 @@ class ActivityAnalyzing : AppCompatActivity() {
         }
 
         val genderValue = when (PredictionDataStore.gender) {
-            "male" -> 0.0f
+            "male" -> 2.0f
             "female" -> 1.0f
             else -> throw IllegalArgumentException("Invalid gender value: ${PredictionDataStore.gender}")
         }
@@ -103,14 +129,16 @@ class ActivityAnalyzing : AppCompatActivity() {
         inputBuffer.putFloat(PredictionDataStore.heartRate.toFloat())
         inputBuffer.putFloat(PredictionDataStore.systolic.toFloat())
         inputBuffer.putFloat(PredictionDataStore.diastolic.toFloat())
-        inputBuffer.putFloat(0.0f)
+        inputBuffer.putFloat(0.0f) // Optional feature
 
         inputBuffer.rewind()
         return inputBuffer
     }
 
     private fun handlePredictionResult(result: FloatArray) {
-        val maxIndex = result.indexOfFirst { it == result.maxOrNull() }
+        val maxIndex = result.indices.maxByOrNull { result[it] } ?: -1
+        Log.d("ActivityAnalyzing", "Prediction Index: $maxIndex, Result: ${disorderMapping[maxIndex]}")
+
         when (maxIndex) {
             0 -> handleNoSleepDisorder()
             1 -> navigateTo(ActivityResultSleepApnea::class.java)

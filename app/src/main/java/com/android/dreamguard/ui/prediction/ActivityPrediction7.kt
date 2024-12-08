@@ -10,13 +10,16 @@ import com.capstone.dreamguard.databinding.ActivityPrediction7Binding
 class ActivityPrediction7 : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrediction7Binding
-    private var weight: Int = 60 // Default weight in kg
-    private var height: Int = 170 // Default height in cm
+    private var weight: Int = 60
+    private var height: Int = 170
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrediction7Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        weight = PredictionDataStore.weight.takeIf { it > 0 } ?: 60
+        height = PredictionDataStore.height.takeIf { it > 0 } ?: 170
 
         setupToolbar()
         setupListeners()
@@ -26,7 +29,7 @@ class ActivityPrediction7 : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
     }
 
@@ -82,8 +85,6 @@ class ActivityPrediction7 : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction8::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }

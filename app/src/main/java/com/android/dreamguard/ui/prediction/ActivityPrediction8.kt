@@ -10,12 +10,14 @@ import com.capstone.dreamguard.databinding.ActivityPrediction8Binding
 class ActivityPrediction8 : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrediction8Binding
-    private var dailySteps: Int = 5000 // Default daily steps value
+    private var dailySteps: Int = 5000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrediction8Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        dailySteps = PredictionDataStore.dailySteps.takeIf { it > 0 } ?: 5000
 
         setupToolbar()
         setupListeners()
@@ -24,7 +26,7 @@ class ActivityPrediction8 : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
     }
 
@@ -59,8 +61,6 @@ class ActivityPrediction8 : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction9::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }

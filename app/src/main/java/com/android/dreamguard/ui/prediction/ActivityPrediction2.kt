@@ -17,6 +17,8 @@ class ActivityPrediction2 : AppCompatActivity() {
         binding = ActivityPrediction2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        age = PredictionDataStore.age.takeIf { it > 0 } ?: 25
+
         setupToolbar()
         setupListeners()
         updateAgeDisplay()
@@ -24,7 +26,7 @@ class ActivityPrediction2 : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
     }
 
@@ -59,8 +61,6 @@ class ActivityPrediction2 : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction3::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }

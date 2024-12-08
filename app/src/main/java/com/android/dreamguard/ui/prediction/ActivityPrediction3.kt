@@ -10,12 +10,14 @@ import com.capstone.dreamguard.databinding.ActivityPrediction3Binding
 class ActivityPrediction3 : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrediction3Binding
-    private var hoursOfSleep: Int = 7 // Default sleep hours value
+    private var hoursOfSleep: Int = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrediction3Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hoursOfSleep = PredictionDataStore.hoursOfSleep.takeIf { it > 0 } ?: 8
 
         setupToolbar()
         setupListeners()
@@ -24,7 +26,7 @@ class ActivityPrediction3 : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
     }
 
@@ -59,8 +61,6 @@ class ActivityPrediction3 : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction4::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }

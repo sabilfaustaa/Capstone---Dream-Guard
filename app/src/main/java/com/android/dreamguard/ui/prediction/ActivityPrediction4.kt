@@ -10,12 +10,14 @@ import com.capstone.dreamguard.databinding.ActivityPrediction4Binding
 class ActivityPrediction4 : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrediction4Binding
-    private var sleepQuality: Int = 5 // Default sleep quality value
+    private var sleepQuality: Int = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrediction4Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sleepQuality = PredictionDataStore.sleepQuality.takeIf { it > 0 } ?: 5
 
         setupToolbar()
         setupListeners()
@@ -24,7 +26,7 @@ class ActivityPrediction4 : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
     }
 
@@ -59,8 +61,6 @@ class ActivityPrediction4 : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction5::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }

@@ -90,6 +90,7 @@
     <string name="analyzing">Analyzing your data to provide \npersonalized insights and \nrecommendations. . . . .</string>
     <string name="predict_result">Prediction Result</string>
     <string name="identify">We have Identified <font color="#7EE4E0">No Sleep Disorder</font> In Your Results</string>
+    <string name="identify_sleep_apnea">We have Identified <font color="#7EE4E0">Sleep Apnea</font> In Your Results</string>
     <string name="result">In Your Results</string>
     <string name="desc_result_predict">Great news! Our prediction shows that you don\'t have any sleep disorders. This means you\'re doing an awesome job taking care of your health and sleep! Keep it up and even aim to elevate your health and sleep to the next level to keep enjoying all the benefits for your body! Don\'t forget to maintain your sleep schedule of at least 8 hours and manage your stress levels.</string>
     <string name="desc_result_tips">You\'re getting less than 8 hours of sleep, but don\'t worry! We\'ve got some fun tips for you!</string>

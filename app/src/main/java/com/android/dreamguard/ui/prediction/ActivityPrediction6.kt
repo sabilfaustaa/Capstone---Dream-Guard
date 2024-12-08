@@ -10,13 +10,16 @@ import com.capstone.dreamguard.databinding.ActivityPrediction6Binding
 class ActivityPrediction6 : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrediction6Binding
-    private var activityLevel: Int = 5 // Default activity level
-    private var stressLevel: Int = 5 // Default stress level
+    private var activityLevel: Int = 5
+    private var stressLevel: Int = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrediction6Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        activityLevel = PredictionDataStore.hoursOfSleep.takeIf { it > 0 } ?: 5
+        stressLevel = PredictionDataStore.stressLevel.takeIf { it > 0 } ?: 5
 
         setupToolbar()
         setupListeners()
@@ -26,7 +29,7 @@ class ActivityPrediction6 : AppCompatActivity() {
 
     private fun setupToolbar() {
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
     }
 
@@ -82,8 +85,6 @@ class ActivityPrediction6 : AppCompatActivity() {
             return
         }
         val intent = Intent(this, ActivityPrediction7::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
     }
 }
