@@ -26,14 +26,14 @@ class SplashActivity : AppCompatActivity() {
 
         userPreferences = UserPreferences(this)
 
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val token = withContext(Dispatchers.IO) { userPreferences.getToken() }
-//            if (!token.isNullOrEmpty()) {
-//                navigateToHome()
-//            } else {
+        CoroutineScope(Dispatchers.Main).launch {
+            val token = withContext(Dispatchers.IO) { userPreferences.getToken() }
+            if (!token.isNullOrEmpty()) {
+                navigateToHome()
+            } else {
                 navigateToOnboarding()
-//            }
-//        }
+            }
+        }
     }
 
     private fun navigateToHome() {

@@ -30,7 +30,7 @@
     <string name="text_verify">Verify your email address</string>
     <string name="text_information_email">Just follow the link we sent to:</string>
     <string name="text_email">dreamguard@gmail.com</string>
-    <string name="text_verify_information">If you doesn’t receive an email you can resend the verification email in 0:59</string>
+    <string name="text_verify_information">If you don’t receive an email, you can resend the verification email in 0:%1$s</string>
     <string name="label_password">Password</string>
     <string name="question">QUESTION</string>
     <string name="link_login">Don’t have an account?</string>
