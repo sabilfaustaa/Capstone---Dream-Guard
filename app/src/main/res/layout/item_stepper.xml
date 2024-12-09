@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!-- Circle for Step -->
+        <View
+            android:id="@+id/stepActiveCircle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_active" />
+
+        <!-- Line between Circles -->
+        <View
+            android:id="@+id/stepLine8"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine9"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine1"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine2"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine3"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine4"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine5"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+        <View
+            android:id="@+id/stepLine6"
+            android:layout_width="10dp"
+            android:layout_height="2.5dp"
+            android:background="@color/lightGray" />
+
+        <View
+            android:id="@+id/stepInactiveCircle7"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/step_inactive" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
