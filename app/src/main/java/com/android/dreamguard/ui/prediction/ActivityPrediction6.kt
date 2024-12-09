@@ -18,8 +18,9 @@ class ActivityPrediction6 : AppCompatActivity() {
         binding = ActivityPrediction6Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        activityLevel = PredictionDataStore.hoursOfSleep.takeIf { it > 0 } ?: 5
-        stressLevel = PredictionDataStore.stressLevel.takeIf { it > 0 } ?: 5
+        // Set initial values from PredictionDataStore
+        activityLevel = PredictionDataStore.activityLevel.takeIf { it in 1..100 } ?: 5
+        stressLevel = PredictionDataStore.stressLevel.takeIf { it in 1..100 } ?: 5
 
         setupToolbar()
         setupListeners()
@@ -34,22 +35,22 @@ class ActivityPrediction6 : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Activity Level
-        binding.iconMinButton.setOnClickListener {
+        // Listeners for Activity Level
+        binding.iconMinButtonAct.setOnClickListener {
             if (activityLevel > 1) {
                 activityLevel--
                 updateActivityLevelDisplay()
             }
         }
 
-        binding.iconPlusButton.setOnClickListener {
-            if (activityLevel < 10) {
+        binding.iconPlusButtonAct.setOnClickListener {
+            if (activityLevel < 100) {
                 activityLevel++
                 updateActivityLevelDisplay()
             }
         }
 
-        // Stress Level
+        // Listeners for Stress Level
         binding.iconMinButtonStr.setOnClickListener {
             if (stressLevel > 1) {
                 stressLevel--
@@ -58,13 +59,15 @@ class ActivityPrediction6 : AppCompatActivity() {
         }
 
         binding.iconPlusButtonStr.setOnClickListener {
-            if (stressLevel < 10) {
+            if (stressLevel < 100) {
                 stressLevel++
                 updateStressLevelDisplay()
             }
         }
 
+        // Predict button listener
         binding.predictButton.setOnClickListener {
+            // Update PredictionDataStore with new values
             PredictionDataStore.activityLevel = activityLevel
             PredictionDataStore.stressLevel = stressLevel
             proceedToNextStep()
@@ -72,7 +75,7 @@ class ActivityPrediction6 : AppCompatActivity() {
     }
 
     private fun updateActivityLevelDisplay() {
-        binding.ageNumber.text = activityLevel.toString()
+        binding.ageNumberAct.text = activityLevel.toString()
     }
 
     private fun updateStressLevelDisplay() {
@@ -80,10 +83,12 @@ class ActivityPrediction6 : AppCompatActivity() {
     }
 
     private fun proceedToNextStep() {
-        if (activityLevel < 1 || activityLevel > 10 || stressLevel < 1 || stressLevel > 10) {
+        if (activityLevel !in 1..100 || stressLevel !in 1..100) {
+            // Ensure valid range before proceeding
             println("Invalid activity or stress level values")
             return
         }
+        // Navigate to the next activity
         val intent = Intent(this, ActivityPrediction7::class.java)
         startActivity(intent)
     }
