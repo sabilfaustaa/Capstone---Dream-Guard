@@ -43,5 +43,30 @@ class AddScheduleViewModel(private val context: Context) : ViewModel() {
         }
     }
 
+    fun updateSleepSchedule(scheduleId: String, bedTime: String, wakeUpTime: String, wakeUpAlarm: Boolean, sleepReminders: Boolean) {
+        val apiService = ApiConfig.getApiService(context)
+
+        val request = SleepScheduleRequest(
+            id = scheduleId,
+            bedTime = bedTime,
+            wakeUpTime = wakeUpTime,
+            wakeUpAlarm = wakeUpAlarm,
+            sleepReminders = sleepReminders
+        )
+
+        viewModelScope.launch {
+            try {
+                val response = apiService.updateSleepSchedule(scheduleId, request)
+                if (response.isSuccessful) {
+                    _addScheduleResult.value = true
+                } else {
+                    _addScheduleResult.value = false
+                    _errorMessage.value = "Failed to add schedule: ${response.message()}"
+                }
+            } catch (e: Exception) {
+                _errorMessage.postValue("Error: ${e.message}")
+            }
+        }
+    }
 
 }

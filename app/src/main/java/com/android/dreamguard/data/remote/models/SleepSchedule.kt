@@ -1,6 +1,11 @@
 package com.android.dreamguard.data.remote.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class SleepSchedule(
+    val id: String,
     val bedTime: String?,
     val wakeUpTime: String?,
     val wakeUpAlarm: Boolean?,
@@ -12,6 +17,5 @@ data class SleepSchedule(
     val difference: String?,
     val sleepQuality: String?,
     val notes: String?,
-    val createdAt: String?,
-    val id: String
-)
+    val createdAt: String?
+) : Parcelable

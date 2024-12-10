@@ -9,4 +9,5 @@ class PredictionRepository(private val apiService: ApiService) {
     suspend fun submitPrediction(predictionData: Map<String, Int>): Response<PredictionResponse> {
         return apiService.addNewPrediction(predictionData)
     }
+
 }

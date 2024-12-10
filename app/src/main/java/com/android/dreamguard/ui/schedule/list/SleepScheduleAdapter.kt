@@ -1,5 +1,6 @@
 package com.android.dreamguard.ui.schedule.list
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.capstone.dreamguard.R
 import com.capstone.dreamguard.databinding.ItemSleepScheduleBinding
 import com.android.dreamguard.data.remote.models.SleepSchedule
+import com.android.dreamguard.ui.schedule.add.AddScheduleActivity
 
 class SleepScheduleAdapter(
     private val onActualDataClick: (SleepSchedule) -> Unit
@@ -62,6 +64,11 @@ class SleepScheduleAdapter(
                 binding.labelClockDurationActual2.text = schedule.actualDuration ?: "N/A"
                 binding.labelClockDifferentTimeActual.text = schedule.difference ?: "N/A"
             }
+
+            binding.editButton.setOnClickListener {
+                onActualDataClick(schedule)
+            }
+
         }
     }
 }

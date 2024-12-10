@@ -36,7 +36,7 @@ interface ApiService {
     @PATCH("/api/user/sleep-schedules/{id}")
     suspend fun updateSleepSchedule(
         @Path("id") scheduleId: String,
-        @Body schedule: Map<String, Any>
+        @Body schedule: SleepScheduleRequest
     ): Response<SleepScheduleResponse>
 
     @PATCH("/api/user/sleep-goals")

@@ -13,4 +13,5 @@ class AuthRepository(private val apiService: ApiService) {
         )
         return apiService.registerNewUser(requestBody)
     }
+
 }

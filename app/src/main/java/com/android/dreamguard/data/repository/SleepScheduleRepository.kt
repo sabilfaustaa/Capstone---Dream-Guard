@@ -12,8 +12,8 @@ class SleepScheduleRepository(private val context: Context) {
     suspend fun getSleepSchedules() =
         apiService.getSleepSchedules()
 
-    suspend fun updateSleepSchedule(scheduleId: String, schedule: Map<String, Any>) =
-        apiService.updateSleepSchedule(scheduleId, schedule)
+//    suspend fun updateSleepSchedule(scheduleId: String, schedule: Map<String, Any>) =
+//        apiService.updateSleepSchedule(scheduleId, schedule)
 
     suspend fun updateSleepGoals(goals: Map<String, Int>) =
         apiService.updateSleepGoals(goals)

@@ -36,8 +36,10 @@ class SleepSchedulerActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         adapter = SleepScheduleAdapter(
             onActualDataClick = { schedule ->
-                Toast.makeText(this, "Actual Data for ${schedule.id} clicked", Toast.LENGTH_SHORT).show()
-                // Handle further actions for actual data click
+                val intent = Intent(this, AddScheduleActivity::class.java)
+                intent.putExtra("schedule_data", schedule)
+                intent.putExtra("isEdit", true)
+                startActivity(intent)
             }
         )
         binding.recyclerView.apply {
