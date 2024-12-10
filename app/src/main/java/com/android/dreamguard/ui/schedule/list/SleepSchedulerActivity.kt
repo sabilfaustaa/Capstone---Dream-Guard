@@ -1,11 +1,14 @@
-package com.android.dreamguard.ui.schedule
+package com.android.dreamguard.ui.schedule.list
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.dreamguard.data.remote.models.SleepSchedule
+import com.android.dreamguard.ui.history.PredictionHistoryActivity
+import com.android.dreamguard.ui.schedule.add.AddScheduleActivity
 import com.capstone.dreamguard.databinding.ActivitySleepSchedulerBinding
 
 class SleepSchedulerActivity : AppCompatActivity() {
@@ -20,6 +23,10 @@ class SleepSchedulerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySleepSchedulerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.floatingActionButton.setOnClickListener({
+            navigateToAddScheduler()
+        })
 
         setupRecyclerView()
         setupObservers()
@@ -49,9 +56,16 @@ class SleepSchedulerActivity : AppCompatActivity() {
         }
 
         viewModel.errorMessage.observe(this) { error ->
+            Log.d("GETSCHEDULLER", error)
             error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun navigateToAddScheduler() {
+        val intent = Intent(this, AddScheduleActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
     }
 }

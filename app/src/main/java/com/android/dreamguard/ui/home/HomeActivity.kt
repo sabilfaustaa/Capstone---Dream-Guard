@@ -16,6 +16,7 @@ import com.android.dreamguard.utils.CustomBottomNavigation
 import android.view.LayoutInflater
 import androidx.compose.runtime.Composable
 import com.android.dreamguard.ui.history.PredictionHistoryActivity
+import com.android.dreamguard.ui.schedule.list.SleepSchedulerActivity
 
 class HomeActivity : ComponentActivity() {
 
@@ -49,6 +50,8 @@ class HomeActivity : ComponentActivity() {
 
                     binding.predictionHistoryButton.setOnClickListener { navigateToHistory() }
 
+                    binding.sleepSchedulerButton.setOnClickListener { navigateToScheduler() }
+
                     binding.root
 
                 },
@@ -74,6 +77,12 @@ class HomeActivity : ComponentActivity() {
 
     private fun navigateToHistory() {
         val intent = Intent(this, PredictionHistoryActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+    }
+
+    private fun navigateToScheduler() {
+        val intent = Intent(this, SleepSchedulerActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)
     }

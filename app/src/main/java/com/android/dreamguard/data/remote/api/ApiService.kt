@@ -25,14 +25,13 @@ interface ApiService {
         @Query("predictionResult") predictionResult: String
     ): Response<PredictionHistoryResponse>
 
-
     @POST("/api/user/sleep-schedules")
     suspend fun addSleepSchedule(
-        @Body schedule: Map<String, Any>
+        @Body schedule: SleepScheduleRequest
     ): Response<SleepScheduleResponse>
 
     @GET("/api/user/sleep-schedules")
-    suspend fun getSleepSchedules(): Response<List<SleepSchedule>>
+    suspend fun getSleepSchedules(): Response<SleepScheduleListResponse>
 
     @PATCH("/api/user/sleep-schedules/{id}")
     suspend fun updateSleepSchedule(

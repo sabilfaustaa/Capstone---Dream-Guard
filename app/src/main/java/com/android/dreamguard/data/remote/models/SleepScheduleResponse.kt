@@ -1,5 +1,11 @@
 package com.android.dreamguard.data.remote.models
 
+data class SleepScheduleListResponse(
+    val status: String,
+    val message: String,
+    val data: List<SleepSchedule>
+)
+
 data class SleepScheduleResponse(
     val bedTime: String?,
     val wakeUpTime: String?,

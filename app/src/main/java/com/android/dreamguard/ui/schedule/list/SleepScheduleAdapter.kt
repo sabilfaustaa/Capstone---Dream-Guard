@@ -1,4 +1,4 @@
-package com.android.dreamguard.ui.schedule
+package com.android.dreamguard.ui.schedule.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -40,9 +40,9 @@ class SleepScheduleAdapter(
 
         fun bind(schedule: SleepSchedule) {
             binding.labelPlannedText.text = binding.root.context.getString(R.string.label_planned)
-            binding.labelBedtime.text = schedule.bedTime ?: "N/A"
-            binding.labelWake.text = schedule.wakeUpTime ?: "N/A"
-            binding.labelDuration.text = schedule.plannedDuration ?: "N/A"
+            binding.labelClockBedtime.text = schedule.bedTime ?: "N/A"
+            binding.labelClockWake.text = schedule.wakeUpTime ?: "N/A"
+            binding.labelClockDuration.text = schedule.plannedDuration ?: "N/A"
 
             if (schedule.actualBedTime.isNullOrEmpty() || schedule.actualWakeUpTime.isNullOrEmpty()) {
                 binding.actualButton.visibility = View.VISIBLE
@@ -50,13 +50,17 @@ class SleepScheduleAdapter(
                 binding.actualButton.setOnClickListener {
                     onActualDataClick(schedule)
                 }
+                binding.labelClockDurationActual.text = "--"
+                binding.labelClockWakeTimeActual.text = "--"
+                binding.labelClockDurationActual2.text = "--"
+                binding.labelClockDifferentTimeActual.text = "--"
             } else {
                 binding.actualButton.visibility = View.GONE
                 binding.linearActual.visibility = View.VISIBLE
-                binding.labelBedActual.text = schedule.actualBedTime
-                binding.labelWakeActual.text = schedule.actualWakeUpTime
-                binding.labelDurationActual.text = schedule.actualDuration ?: "N/A"
-                binding.labelDifferenceActual.text = schedule.difference ?: "N/A"
+                binding.labelClockDurationActual.text = schedule.actualBedTime
+                binding.labelClockWakeTimeActual.text = schedule.actualWakeUpTime
+                binding.labelClockDurationActual2.text = schedule.actualDuration ?: "N/A"
+                binding.labelClockDifferentTimeActual.text = schedule.difference ?: "N/A"
             }
         }
     }

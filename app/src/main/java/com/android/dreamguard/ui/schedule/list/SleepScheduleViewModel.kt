@@ -1,4 +1,4 @@
-package com.android.dreamguard.ui.schedule
+package com.android.dreamguard.ui.schedule.list
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -24,9 +24,8 @@ class SleepScheduleViewModel(private val context: Context) : ViewModel() {
             try {
                 val response = apiService.getSleepSchedules()
                 if (response.isSuccessful) {
-                    val scheduleResponses = response.body() ?: emptyList()
-                    val mappedSchedules = scheduleResponses
-                    _sleepSchedules.value = mappedSchedules
+                    val schedules = response.body()?.data ?: emptyList()
+                    _sleepSchedules.value = schedules
                 } else {
                     _errorMessage.value = "Failed to fetch schedules: ${response.message()}"
                 }
@@ -34,5 +33,6 @@ class SleepScheduleViewModel(private val context: Context) : ViewModel() {
                 _errorMessage.value = "Error: ${e.message}"
             }
         }
+
     }
 }
