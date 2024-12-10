@@ -94,8 +94,6 @@ class ActivityPrediction9 : AppCompatActivity() {
             PredictionDataStore.heartRate = binding.ageNumber1.text.toString().toInt()
             PredictionDataStore.systolic = binding.ageNumber2.text.toString().toInt()
             PredictionDataStore.diastolic = binding.ageNumber3.text.toString().toInt()
-
-            Toast.makeText(this, "Input saved successfully!", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             showError("Error saving input data: ${e.message}")
         }

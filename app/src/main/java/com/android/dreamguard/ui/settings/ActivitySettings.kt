@@ -41,22 +41,11 @@ class ActivitySettings : ComponentActivity() {
                 factory = { context ->
                     val binding = ActivitySettingsBinding.inflate(LayoutInflater.from(context))
 
-                    // Set up listeners for buttons
-                    binding.logoutButton.setOnClickListener {
-                        logout()
-                    }
-                    binding.changePasswordRow.setOnClickListener {
-                        navigateToChangePassword()
-                    }
-                    binding.deleteAccountRow.setOnClickListener {
-                        navigateToDeleteAccount()
-                    }
-                    binding.giveFeedbackRow.setOnClickListener {
-                        navigateToGiveFeedback()
-                    }
-                    binding.editProfileIcon.setOnClickListener {
-                        navigateToEditProfile()
-                    }
+                    binding.logoutButton.setOnClickListener { logout() }
+                    binding.changePasswordRow.setOnClickListener { navigateToChangePassword() }
+                    binding.deleteAccountRow.setOnClickListener { navigateToDeleteAccount() }
+                    binding.giveFeedbackRow.setOnClickListener { navigateToGiveFeedback() }
+                    binding.editProfileIcon.setOnClickListener { navigateToEditProfile() }
 
                     binding.root
                 },
@@ -66,13 +55,16 @@ class ActivitySettings : ComponentActivity() {
             Box(
                 modifier = Modifier.align(Alignment.BottomCenter)
             ) {
-                CustomBottomNavigation { selectedTab ->
-                    when (selectedTab) {
-                        "Home" -> navigateToHome()
-                        "Predict" -> navigateToPredict()
-                        "Profile" -> {}
+                CustomBottomNavigation(
+                    currentTab = "Profile",
+                    onTabSelected = { selectedTab ->
+                        when (selectedTab) {
+                            "Home" -> navigateToHome()
+                            "Predict" -> navigateToPredict()
+                            "Profile" -> {}
+                        }
                     }
-                }
+                )
             }
         }
     }
@@ -86,11 +78,15 @@ class ActivitySettings : ComponentActivity() {
     }
 
     private fun navigateToHome() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
     }
 
     private fun navigateToPredict() {
-        startActivity(Intent(this, ActivityPrediction::class.java))
+        val intent = Intent(this, ActivityPrediction::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
     }
 
     private fun navigateToChangePassword() {

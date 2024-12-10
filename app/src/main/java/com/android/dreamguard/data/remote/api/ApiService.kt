@@ -17,4 +17,7 @@ interface ApiService {
         @Body predictionData: Map<String, Int>
     ): Response<PredictionResponse>
 
+    @GET("api/user/predictions")
+    suspend fun getPredictionHistory(): Response<PredictionHistoryResponse>
+
 }

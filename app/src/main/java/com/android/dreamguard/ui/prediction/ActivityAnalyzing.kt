@@ -62,8 +62,12 @@ class ActivityAnalyzing : AppCompatActivity() {
     private fun observePredictionResult() {
         viewModel.predictionResult.observe(this) { response ->
             if (response.isSuccessful) {
-                response.body()?.let {
-                    handlePredictionResult(it.data.prediction.id)
+                response.body()?.let { result ->
+                    Log.d("ActivityAnalyzing", "Prediction ID: ${result.data.prediction.id}")
+                    Log.d("ActivityAnalyzing", "Prediction Result: ${result.data.prediction.result}")
+                    Log.d("ActivityAnalyzing", "Confidence Percentages: ${result.data.prediction.confidencePercentage}")
+
+                    handlePredictionResult(result.data.prediction.id)
                 } ?: showError("Prediction failed: No data found.")
             } else {
                 showError("Prediction failed: ${response.message()}")
@@ -76,6 +80,7 @@ class ActivityAnalyzing : AppCompatActivity() {
     }
 
     private fun handlePredictionResult(predictionId: Int) {
+        Log.d("ActivityAnalyzing", "Prediction ID: $predictionId")
         when (predictionId) {
             1 -> navigateTo(ActivityResultNoSleepDisorder::class.java)
             2 -> navigateTo(ActivityResultSleepApnea::class.java)

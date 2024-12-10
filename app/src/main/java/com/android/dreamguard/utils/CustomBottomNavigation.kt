@@ -18,9 +18,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.capstone.dreamguard.R
-
 @Composable
 fun CustomBottomNavigation(
+    currentTab: String,
     onTabSelected: (String) -> Unit
 ) {
     Box(
@@ -40,7 +40,7 @@ fun CustomBottomNavigation(
             BottomNavigationTab(
                 icon = ImageVector.vectorResource(id = R.drawable.ic_home),
                 label = "Home",
-                backgroundColor = Color(0xFF9ED9D9),
+                backgroundColor = if (currentTab == "Home") Color(0xFF9ED9D9) else Color.Transparent,
                 contentColor = Color.White
             ) {
                 onTabSelected("Home")
@@ -51,7 +51,7 @@ fun CustomBottomNavigation(
             BottomNavigationTab(
                 icon = ImageVector.vectorResource(id = R.drawable.ic_profile),
                 label = "Profile",
-                backgroundColor = Color.Transparent,
+                backgroundColor = if (currentTab == "Profile") Color(0xFF9ED9D9) else Color.Transparent,
                 contentColor = Color.White
             ) {
                 onTabSelected("Profile")
@@ -83,6 +83,7 @@ fun CustomBottomNavigation(
         }
     }
 }
+
 
 @Composable
 fun BottomNavigationTab(

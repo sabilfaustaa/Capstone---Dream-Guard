@@ -39,7 +39,7 @@ class VerificationActivity : AppCompatActivity() {
     }
 
     private fun startCountdown() {
-        val totalTime = 60000L // 60 detik
+        val totalTime = 60000L
         val interval = 1000L
 
         object : CountDownTimer(totalTime, interval) {

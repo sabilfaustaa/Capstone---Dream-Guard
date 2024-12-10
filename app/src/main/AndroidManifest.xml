@@ -37,8 +37,11 @@
         <activity android:name="com.android.dreamguard.ui.main.MainActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.ForgotPasswordActivity" />
         <activity android:name="com.android.dreamguard.ui.auth.VerificationActivity" />
-        <activity android:name="com.android.dreamguard.ui.home.HomeActivity" />
-        <activity android:name="com.android.dreamguard.ui.settings.ActivitySettings" />
+
+        <activity android:name="com.android.dreamguard.ui.home.HomeActivity" android:theme="@style/Theme.DreamGuard" />
+        <activity android:name="com.android.dreamguard.ui.settings.ActivitySettings" android:theme="@style/Theme.DreamGuard" />
+        <activity android:name="com.android.dreamguard.ui.history.PredictionHistoryActivity" android:theme="@style/Theme.DreamGuard" />
+
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction2" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction3" />
@@ -49,6 +52,7 @@
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction8" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction9" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityAnalyzing" />
+
         <activity android:name="com.android.dreamguard.ui.result.ActivityResultNoSleepDisorder" />
         <activity android:name="com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderUnder8" />
         <activity android:name="com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderStress" />
