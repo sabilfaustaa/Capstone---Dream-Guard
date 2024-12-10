@@ -29,7 +29,7 @@ import kotlinx.coroutines.withContext
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private val authRepository by lazy { AuthRepository(ApiConfig.getApiService()) }
+    private val authRepository by lazy { AuthRepository(ApiConfig.getApiService(this)) }
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var userPreferences: UserPreferences
 

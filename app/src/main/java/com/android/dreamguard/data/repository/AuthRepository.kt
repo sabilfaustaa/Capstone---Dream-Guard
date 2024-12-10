@@ -11,6 +11,6 @@ class AuthRepository(private val apiService: ApiService) {
             "email" to email,
             "name" to name
         )
-        return apiService.registerNewUser("Bearer $token", requestBody)
+        return apiService.registerNewUser(requestBody)
     }
 }

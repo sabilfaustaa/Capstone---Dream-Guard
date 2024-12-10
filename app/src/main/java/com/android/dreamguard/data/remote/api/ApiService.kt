@@ -9,10 +9,12 @@ interface ApiService {
 
     @POST("api/user/register")
     suspend fun registerNewUser(
-        @Header("Authorization") authorization: String,
         @Body requestBody: Map<String, String>
     ): Response<RegisterResponse>
 
-    @GET("api/models/latest")
-    suspend fun fetchLatestModel(): Response<LatestModelResponse>
+    @POST("api/user/predictions")
+    suspend fun addNewPrediction(
+        @Body predictionData: Map<String, Int>
+    ): Response<PredictionResponse>
+
 }

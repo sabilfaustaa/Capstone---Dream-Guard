@@ -7,7 +7,6 @@ import com.capstone.dreamguard.R
 import com.android.dreamguard.data.local.datastore.PredictionDataStore
 import com.android.dreamguard.ui.main.MainActivity
 import com.capstone.dreamguard.databinding.ActivityPredictionBinding
-import com.android.dreamguard.utils.PredictionModelManager
 import java.lang.Exception
 
 class ActivityPrediction : AppCompatActivity() {

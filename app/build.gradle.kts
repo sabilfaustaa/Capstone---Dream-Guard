@@ -27,7 +27,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+//            buildConfigField("String", "BASE_URL", "\"https://dreamguard-api-257341063998.asia-southeast2.run.app/\"")
         }
+//        debug {
+//            applicationIdSuffix = ".debug"
+//            isDebuggable = true
+//            buildConfigField("String", "BASE_URL", "\"https://dreamguard-api-257341063998.asia-southeast2.run.app/\"")
+//        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

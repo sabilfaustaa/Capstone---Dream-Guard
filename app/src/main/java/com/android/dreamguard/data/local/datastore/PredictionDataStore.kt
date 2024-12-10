@@ -1,11 +1,11 @@
 package com.android.dreamguard.data.local.datastore
 
 object PredictionDataStore {
-    var gender: String? = null // "male" or "female"
+    var gender: String? = null
     var age: Int = 0
     var hoursOfSleep: Int = 0
-    var occupation: Int = 0 // Represented as an index from a predefined list
-    var activityLevel: Int = 0 // Scale: 1-10
+    var occupation: Int = 0
+    var activityLevel: Int = 0 // Scale: 1-100
     var stressLevel: Int = 0 // Scale: 1-10
     var weight: Int = 0 // In kilograms
     var height: Int = 0 // In centimeters
@@ -14,10 +14,6 @@ object PredictionDataStore {
     var diastolic: Int = 0 // Diastolic blood pressure
     var dailySteps: Int = 0 // New property added
     var sleepQuality: Int = 0 // Skala kualitas tidur (1-10)
-
-    fun setGenderFromString(value: String) {
-        gender = value
-    }
 
     fun reset() {
         gender = null

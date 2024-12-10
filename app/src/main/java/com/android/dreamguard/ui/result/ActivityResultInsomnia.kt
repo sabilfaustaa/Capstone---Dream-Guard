@@ -1,18 +1,18 @@
-package com.android.dreamguard.ui.prediction
+package com.android.dreamguard.ui.result
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.dreamguard.ui.main.MainActivity
-import com.capstone.dreamguard.databinding.ActivityResultNoSleepDisorderStressBinding
+import com.capstone.dreamguard.databinding.ActivityResultInsomniaBinding
 
-class ActivityResultNoSleepDisorderStress : AppCompatActivity() {
+class ActivityResultInsomnia : AppCompatActivity() {
 
-    private lateinit var binding: ActivityResultNoSleepDisorderStressBinding
+    private lateinit var binding: ActivityResultInsomniaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResultNoSleepDisorderStressBinding.inflate(layoutInflater)
+        binding = ActivityResultInsomniaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupUI()

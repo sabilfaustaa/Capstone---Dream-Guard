@@ -4,29 +4,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.dreamguard.data.remote.models.LatestModelResponse
-import com.android.dreamguard.data.repository.ModelRepository
+import com.android.dreamguard.data.remote.models.PredictionResponse
+import com.android.dreamguard.data.repository.PredictionRepository
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
-class PredictionViewModel(private val repository: ModelRepository) : ViewModel() {
+class PredictionViewModel(private val repository: PredictionRepository) : ViewModel() {
 
-    private val _modelResponse = MutableLiveData<LatestModelResponse>()
-    val modelResponse: LiveData<LatestModelResponse> get() = _modelResponse
+    private val _predictionResult = MutableLiveData<Response<PredictionResponse>>()
+    val predictionResult: LiveData<Response<PredictionResponse>> = _predictionResult
 
     private val _error = MutableLiveData<String>()
-    val error: LiveData<String> get() = _error
+    val error: LiveData<String> = _error
 
-    fun fetchLatestModelUrl() {
+    fun submitPrediction(predictionData: Map<String, Int>) {
         viewModelScope.launch {
             try {
-                val response = repository.getLatestModelUrl()
-                if (response.isSuccessful) {
-                    _modelResponse.postValue(response.body())
-                } else {
-                    _error.postValue("Error: ${response.errorBody()?.string()}")
-                }
+                val response = repository.submitPrediction(predictionData)
+                _predictionResult.postValue(response)
             } catch (e: Exception) {
-                _error.postValue(e.message)
+                _error.postValue(e.message ?: "An unknown error occurred")
             }
         }
     }

@@ -35,7 +35,6 @@ class ActivityPrediction6 : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Listeners for Activity Level
         binding.iconMinButtonStr.setOnClickListener {
             if (activityLevel > 1) {
                 activityLevel--
@@ -50,15 +49,14 @@ class ActivityPrediction6 : AppCompatActivity() {
             }
         }
 
-        // Listeners for Stress Level
-        binding.iconMinButtonStr.setOnClickListener {
+        binding.iconMinButton.setOnClickListener {
             if (stressLevel > 1) {
                 stressLevel--
                 updateStressLevelDisplay()
             }
         }
 
-        binding.iconPlusButtonStr.setOnClickListener {
+        binding.iconMinButton.setOnClickListener {
             if (stressLevel < 100) {
                 stressLevel++
                 updateStressLevelDisplay()
