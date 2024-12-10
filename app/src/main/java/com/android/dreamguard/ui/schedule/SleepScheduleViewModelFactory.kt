@@ -1,15 +1,14 @@
-package com.android.dreamguard.ui.history
+package com.android.dreamguard.ui.schedule
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class PredictionHistoryViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
-
+class SleepScheduleViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PredictionHistoryViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(SleepScheduleViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return PredictionHistoryViewModel(context) as T
+            return SleepScheduleViewModel(context) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

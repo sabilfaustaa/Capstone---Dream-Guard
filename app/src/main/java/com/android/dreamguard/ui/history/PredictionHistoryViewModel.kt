@@ -17,21 +17,23 @@ class PredictionHistoryViewModel(private val context: Context) : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
-    fun fetchPredictionHistory() {
+    fun fetchPredictionHistory(filter: String? = null) {
+        val apiService = ApiConfig.getApiService(context)
+
         viewModelScope.launch {
             try {
-                val response = ApiConfig.getApiService(context).getPredictionHistory()
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        _predictionHistory.postValue(it.data)
-                    } ?: run {
-                        _errorMessage.postValue("Failed to parse response.")
-                    }
+                val response = if (filter.isNullOrEmpty()) {
+                    apiService.getAllPredictions() // Fetch all predictions
                 } else {
-                    _errorMessage.postValue("Error: ${response.message()}")
+                    apiService.getFilteredPredictions(filter) // Fetch filtered predictions
+                }
+                if (response.isSuccessful) {
+                    _predictionHistory.value = response.body()?.data ?: emptyList()
+                } else {
+                    _errorMessage.value = "Failed to fetch predictions: ${response.message()}"
                 }
             } catch (e: Exception) {
-                _errorMessage.postValue("Error: ${e.message}")
+                _errorMessage.value = "Error: ${e.message}"
             }
         }
     }

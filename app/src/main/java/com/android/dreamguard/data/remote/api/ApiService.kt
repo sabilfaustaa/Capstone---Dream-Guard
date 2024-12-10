@@ -18,6 +18,33 @@ interface ApiService {
     ): Response<PredictionResponse>
 
     @GET("api/user/predictions")
-    suspend fun getPredictionHistory(): Response<PredictionHistoryResponse>
+    suspend fun getAllPredictions(): Response<PredictionHistoryResponse>
 
+    @GET("api/user/predictions/filter")
+    suspend fun getFilteredPredictions(
+        @Query("predictionResult") predictionResult: String
+    ): Response<PredictionHistoryResponse>
+
+
+    @POST("/api/user/sleep-schedules")
+    suspend fun addSleepSchedule(
+        @Body schedule: Map<String, Any>
+    ): Response<SleepScheduleResponse>
+
+    @GET("/api/user/sleep-schedules")
+    suspend fun getSleepSchedules(): Response<List<SleepSchedule>>
+
+    @PATCH("/api/user/sleep-schedules/{id}")
+    suspend fun updateSleepSchedule(
+        @Path("id") scheduleId: String,
+        @Body schedule: Map<String, Any>
+    ): Response<SleepScheduleResponse>
+
+    @PATCH("/api/user/sleep-goals")
+    suspend fun updateSleepGoals(
+        @Body goals: Map<String, Int>
+    ): Response<Map<String, String>>
+
+    @GET("/api/user/sleep-goals")
+    suspend fun getSleepGoals(): Response<Map<String, String>>
 }

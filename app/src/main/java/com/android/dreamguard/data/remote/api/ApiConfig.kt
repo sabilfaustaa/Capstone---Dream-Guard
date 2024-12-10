@@ -28,7 +28,7 @@ object ApiConfig {
 
             val response = chain.proceed(request)
 
-            if (response.code == 401) {
+            if (response.code == 401 || response.code == 403) {
                 synchronized(this) {
                     userPreferences.clear()
                     val intent = Intent(context, LoginActivity::class.java).apply {
