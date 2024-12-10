@@ -44,6 +44,7 @@
 
         <activity android:name="com.android.dreamguard.ui.schedule.list.SleepSchedulerActivity" android:theme="@style/Theme.DreamGuard" />
         <activity android:name="com.android.dreamguard.ui.schedule.add.AddScheduleActivity" android:theme="@style/Theme.DreamGuard" />
+        <activity android:name="com.android.dreamguard.ui.schedule.actual.ActualDataActivity" android:theme="@style/Theme.DreamGuard" />
 
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction2" />

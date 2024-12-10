@@ -7,14 +7,26 @@ data class SleepScheduleRequest(
     val id: String? = null,
 
     @SerializedName("bedTime")
-    val bedTime: String,
+    val bedTime: String? = null,
 
     @SerializedName("wakeUpTime")
-    val wakeUpTime: String,
+    val wakeUpTime: String? = null,
 
     @SerializedName("wakeUpAlarm")
-    val wakeUpAlarm: Boolean,
+    val wakeUpAlarm: Boolean? = null,
 
     @SerializedName("sleepReminders")
-    val sleepReminders: Boolean
+    val sleepReminders: Boolean? = null,
+
+    @SerializedName("actualBedTime")
+    val actualBedTime: String? = null,
+
+    @SerializedName("actualWakeUpTime")
+    val actualWakeUpTime: String? = null,
+
+    @SerializedName("sleepQuality")
+    val sleepQuality: String? = null,
+
+    @SerializedName("notes")
+    val notes: String? = null,
 )

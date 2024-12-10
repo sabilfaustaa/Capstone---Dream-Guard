@@ -11,6 +11,7 @@ import com.android.dreamguard.data.remote.models.SleepSchedule
 import com.android.dreamguard.ui.schedule.add.AddScheduleActivity
 
 class SleepScheduleAdapter(
+    private val onEditClick: (SleepSchedule) -> Unit,
     private val onActualDataClick: (SleepSchedule) -> Unit
 ) : RecyclerView.Adapter<SleepScheduleAdapter.SleepScheduleViewHolder>() {
 
@@ -66,7 +67,7 @@ class SleepScheduleAdapter(
             }
 
             binding.editButton.setOnClickListener {
-                onActualDataClick(schedule)
+                onEditClick(schedule)
             }
 
         }

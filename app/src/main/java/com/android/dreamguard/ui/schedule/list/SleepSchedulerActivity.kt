@@ -8,6 +8,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.dreamguard.ui.history.PredictionHistoryActivity
+import com.android.dreamguard.ui.home.HomeActivity
+import com.android.dreamguard.ui.schedule.actual.ActualDataActivity
 import com.android.dreamguard.ui.schedule.add.AddScheduleActivity
 import com.capstone.dreamguard.databinding.ActivitySleepSchedulerBinding
 
@@ -28,6 +30,10 @@ class SleepSchedulerActivity : AppCompatActivity() {
             navigateToAddScheduler()
         })
 
+        binding.toolbar.setNavigationOnClickListener {
+            navigateToHome()
+        }
+
         setupRecyclerView()
         setupObservers()
         viewModel.fetchSleepSchedules()
@@ -35,10 +41,15 @@ class SleepSchedulerActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         adapter = SleepScheduleAdapter(
-            onActualDataClick = { schedule ->
+            onEditClick = { schedule ->
                 val intent = Intent(this, AddScheduleActivity::class.java)
                 intent.putExtra("schedule_data", schedule)
                 intent.putExtra("isEdit", true)
+                startActivity(intent)
+            },
+            onActualDataClick = { schedule ->
+                val intent = Intent(this, ActualDataActivity::class.java)
+                intent.putExtra("schedule_data", schedule)
                 startActivity(intent)
             }
         )
@@ -58,7 +69,6 @@ class SleepSchedulerActivity : AppCompatActivity() {
         }
 
         viewModel.errorMessage.observe(this) { error ->
-            Log.d("GETSCHEDULLER", error)
             error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
@@ -69,5 +79,11 @@ class SleepSchedulerActivity : AppCompatActivity() {
         val intent = Intent(this, AddScheduleActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
