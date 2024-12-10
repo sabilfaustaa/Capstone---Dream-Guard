@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.android.dreamguard.ui.home.HomeActivity
 import com.capstone.dreamguard.databinding.ActivityGetStartedBinding
 import com.android.dreamguard.ui.prediction.ActivityPrediction
 
@@ -27,12 +28,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.getStartedButton.setOnClickListener {
-            navigateToPrediction()
+            navigateTo()
         }
     }
 
-    private fun navigateToPrediction() {
-        val intent = Intent(this, ActivityPrediction::class.java)
+    private fun navigateTo() {
+        val intent = Intent(this, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
