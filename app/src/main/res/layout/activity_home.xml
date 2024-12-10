@@ -92,13 +92,13 @@
                         android:layout_height="wrap_content"
                         android:text="Your last prediction result is"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/prediction_result"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sleep Apnea"
+                        android:text="Sleep Insomnia"
                         android:textColor="@color/white"
                         android:textSize="25sp"
                         android:textStyle="bold" />
@@ -128,7 +128,7 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/lightGray"
                 app:layout_constraintTop_toBottomOf="@id/prediction_row" />
 
@@ -153,7 +153,7 @@
                     android:id="@+id/last_prediction_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2 December 2024"
+                    android:text="12 December 2024"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>

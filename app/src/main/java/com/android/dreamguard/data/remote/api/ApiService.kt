@@ -7,6 +7,12 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    @GET("/api/user/profile")
+    suspend fun getUserProfile(): Response<RegisterResponse>
+
+    @GET("/api/user/homepage")
+    suspend fun getHomePageData(): Response<HomePageResponse>
+
     @POST("api/user/register")
     suspend fun registerNewUser(
         @Body requestBody: Map<String, String>

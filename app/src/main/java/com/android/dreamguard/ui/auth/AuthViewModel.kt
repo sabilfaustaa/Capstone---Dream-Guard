@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.dreamguard.data.local.UserPreferences
+import com.android.dreamguard.data.remote.api.ApiConfig
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
@@ -35,15 +36,14 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                                 if (tokenTask.isSuccessful) {
                                     val token = tokenTask.result?.token
                                     if (token != null) {
-                                        _authState.value = true
                                         saveTokenToPreferences(token)
+                                        fetchUserProfile()
                                     }
                                 } else {
                                     _errorMessage.value = tokenTask.exception?.message
                                 }
                             }
                         } else {
-                            _authState.value = false
                             _errorMessage.value = task.exception?.message
                         }
                     }
@@ -58,10 +58,27 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    _authState.value = true
+                    fetchUserProfile()
                 } else {
                     _errorMessage.value = task.exception?.message ?: "Google Sign-In failed"
                 }
             }
+    }
+
+    fun fetchUserProfile() {
+        viewModelScope.launch {
+            val apiService = ApiConfig.getApiService(getApplication())
+            val response = apiService.getUserProfile()
+            if (response.isSuccessful) {
+                val userProfile = response.body()?.data
+                userProfile?.let {
+                    userPreferences.saveUserProfile(it)
+                    _authState.value = true
+                }
+            } else {
+                _errorMessage.value = "Failed to fetch user profile"
+            }
+        }
+
     }
 }
