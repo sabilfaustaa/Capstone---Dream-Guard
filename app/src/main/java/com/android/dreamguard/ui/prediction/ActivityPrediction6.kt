@@ -36,14 +36,14 @@ class ActivityPrediction6 : AppCompatActivity() {
 
     private fun setupListeners() {
         // Listeners for Activity Level
-        binding.iconMinButtonAct.setOnClickListener {
+        binding.iconMinButtonStr.setOnClickListener {
             if (activityLevel > 1) {
                 activityLevel--
                 updateActivityLevelDisplay()
             }
         }
 
-        binding.iconPlusButtonAct.setOnClickListener {
+        binding.iconPlusButtonStr.setOnClickListener {
             if (activityLevel < 100) {
                 activityLevel++
                 updateActivityLevelDisplay()
@@ -65,9 +65,7 @@ class ActivityPrediction6 : AppCompatActivity() {
             }
         }
 
-        // Predict button listener
         binding.predictButton.setOnClickListener {
-            // Update PredictionDataStore with new values
             PredictionDataStore.activityLevel = activityLevel
             PredictionDataStore.stressLevel = stressLevel
             proceedToNextStep()
@@ -75,7 +73,7 @@ class ActivityPrediction6 : AppCompatActivity() {
     }
 
     private fun updateActivityLevelDisplay() {
-        binding.ageNumberAct.text = activityLevel.toString()
+        binding.ageNumberStr.text = activityLevel.toString()
     }
 
     private fun updateStressLevelDisplay() {

@@ -73,7 +73,7 @@
     <string name="embed_diastolic">My diastolic blood pressure is:</string>
     <string name="embed_occupation">My current \noccupation is a:</string>
     <string name="describe_quality">In order to provide a suitable result for you, we need to know your sleep quality on a scale of 1 to 10 (1 is poor, 10 is good)</string>
-    <string name="describe_stress">In order to provide a suitable result for you, we need to know your activity level (1 very low, 10 is very high) and stress level (1 is very low, 10 is very high)</string>
+    <string name="describe_stress">In order to provide a suitable result for you, we need to know your activity level (1 very low, 100 is very high) and stress level (1 is very low, 10 is very high)</string>
     <string name="describe_data">In order to provide a suitable result for you, we need to know weight and height for calculating your BMI. For better accuracy, you can use a suitable tool for measuring</string>
     <string name="describe_occupation">In order to provide a suitable result for you, we need to know your current occupation</string>
     <string name="describe_steps">In order to provide a suitable result for you, we need to know your daily steps in a day. If you not keeping track, you can spend a day and use a pedometer or step counter app to count your step</string>

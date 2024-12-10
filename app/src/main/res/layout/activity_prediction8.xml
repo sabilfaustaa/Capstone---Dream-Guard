@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,163 +16,146 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/icon_arrow_gray" />
 
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:letterSpacing="0.1"
-            android:text="@string/question"
-            android:textColor="@color/purple"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
 
-        <TextView
-            android:id="@+id/login_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:letterSpacing="0.1"
-            android:text="@string/eight"
-            android:textColor="@color/purple"
-            android:textSize="20sp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:maxWidth="340dp"
-        android:text="@string/quest_daily"
-        android:textAlignment="center"
-        android:textColor="@color/gray"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:letterSpacing="0.1"
+                    android:text="@string/question"
+                    android:textColor="@color/purple"
+                    android:textSize="20sp" />
 
+                <TextView
+                    android:id="@+id/login_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:letterSpacing="0.1"
+                    android:text="@string/eight"
+                    android:textColor="@color/purple"
+                    android:textSize="20sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/ActText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/embed_daily"
-        android:textAlignment="center"
-        android:textColor="@color/gray"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@id/buttonWrapperStr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question" />
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:maxWidth="340dp"
+                android:text="@string/quest_daily"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="20sp" />
 
-    <LinearLayout
-        android:id="@+id/buttonWrapperStr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ActText">
+            <TextView
+                android:id="@+id/ActText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/embed_daily"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="22sp" />
 
-        <Button
-            android:id="@+id/iconMinButtonStr"
-            style="?attr/materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal"
-            android:contentDescription="@string/image"
-            app:icon="@drawable/icon_min" />
+            <LinearLayout
+                android:id="@+id/buttonWrapperStr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/ageNumberStr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/embed_age_num"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/iconMinButtonStr"
+                    style="?attr/materialIconButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/teal"
+                    android:contentDescription="@string/image"
+                    app:icon="@drawable/icon_min" />
 
-        <Button
-            android:id="@+id/iconPlusButtonStr"
-            style="?attr/materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal"
-            android:contentDescription="@string/image"
-            app:icon="@drawable/icon_plus" />
+                <TextView
+                    android:id="@+id/ageNumberStr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/embed_age_num"
+                    android:textSize="20sp" />
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/iconPlusButtonStr"
+                    style="?attr/materialIconButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/teal"
+                    android:contentDescription="@string/image"
+                    app:icon="@drawable/icon_plus" />
 
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/describe_prediction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:maxWidth="340dp"
-        android:text="@string/describe_steps"
-        android:textAlignment="center"
-        android:textColor="@color/gray"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal" />
+            <TextView
+                android:id="@+id/describe_prediction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:maxWidth="340dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/describe_steps"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/predictButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/purple"
-        android:fontFamily="@font/poppins_medium"
-        android:minWidth="360dp"
-        android:minHeight="50dp"
-        android:text="@string/button_predict"
-        android:textSize="16sp"
-        app:cornerRadius="7dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/describe_prediction" />
+            <Button
+                android:id="@+id/predictButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/purple"
+                android:fontFamily="@font/poppins_medium"
+                android:minWidth="360dp"
+                android:minHeight="50dp"
+                android:text="@string/button_predict"
+                android:textSize="16sp"
+                app:cornerRadius="7dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stepperRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/predictButton"
-        tools:ignore="SpeakableTextPresentCheck"
-        tools:listitem="@layout/item_stepper" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/stepperRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:listitem="@layout/item_stepper" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.55"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
