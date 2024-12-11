@@ -10,7 +10,7 @@ interface ApiService {
     @GET("/api/user/profile")
     suspend fun getUserProfile(): Response<RegisterResponse>
 
-    @GET("/api/user/homepage")
+    @GET("/api/user/statistics")
     suspend fun getHomePageData(): Response<HomePageResponse>
 
     @POST("api/user/register")
@@ -51,5 +51,5 @@ interface ApiService {
     ): Response<Map<String, String>>
 
     @GET("/api/user/sleep-goals")
-    suspend fun getSleepGoals(): Response<Map<String, String>>
+    suspend fun getSleepGoals(): Response<SleepGoalResponse>
 }

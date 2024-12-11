@@ -59,7 +59,6 @@ class HomeActivity : ComponentActivity() {
                 factory = { context ->
                     val binding = ActivityHomeBinding.inflate(LayoutInflater.from(context))
 
-                    // Update UI with user data
                     updateProfileSection(
                         binding.profilePicture,
                         binding.greetingText,

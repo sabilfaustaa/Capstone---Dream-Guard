@@ -11,6 +11,7 @@ import com.android.dreamguard.ui.history.PredictionHistoryActivity
 import com.android.dreamguard.ui.home.HomeActivity
 import com.android.dreamguard.ui.schedule.actual.ActualDataActivity
 import com.android.dreamguard.ui.schedule.add.AddScheduleActivity
+import com.android.dreamguard.ui.schedule.goal.SleepGoalActivity
 import com.capstone.dreamguard.databinding.ActivitySleepSchedulerBinding
 
 class SleepSchedulerActivity : AppCompatActivity() {
@@ -34,9 +35,14 @@ class SleepSchedulerActivity : AppCompatActivity() {
             navigateToHome()
         }
 
+        binding.editButton.setOnClickListener({
+            navigateToSleepGoal()
+        })
+
         setupRecyclerView()
         setupObservers()
         viewModel.fetchSleepSchedules()
+        viewModel.fetchSleepGoal()
     }
 
     private fun setupRecyclerView() {
@@ -68,6 +74,10 @@ class SleepSchedulerActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.sleepGoal.observe(this) { sleepGoal ->
+            binding.sleepGoalDuration.text = sleepGoal
+        }
+
         viewModel.errorMessage.observe(this) { error ->
             error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
@@ -77,6 +87,12 @@ class SleepSchedulerActivity : AppCompatActivity() {
 
     private fun navigateToAddScheduler() {
         val intent = Intent(this, AddScheduleActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+    }
+
+    private fun navigateToSleepGoal() {
+        val intent = Intent(this, SleepGoalActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)
     }
