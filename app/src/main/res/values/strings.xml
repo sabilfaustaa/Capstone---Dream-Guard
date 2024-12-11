@@ -230,4 +230,5 @@
     <string name="mess_delete_account">Are you sure you want to delete this account?</string>
     <string name="desc_delete">Once you delete your account, you will lose all your data and information</string>
     <string name="title_set_password">Set your new password</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
 </resources>

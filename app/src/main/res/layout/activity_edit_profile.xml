@@ -52,15 +52,30 @@
             </com.google.android.material.appbar.MaterialToolbar>
 
 
-            <ImageView
-                android:id="@+id/profileUser"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="50dp"
-                android:background="@drawable/testing"
-                android:scaleType="centerCrop"
-                android:src="@drawable/shinon" />
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/profileUser"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_background"
+                    android:contentDescription="@string/profile"
+                    android:scaleType="centerCrop" />
+
+                <ImageButton
+                    android:id="@+id/profileChangeButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBottom="@id/profileUser"
+                    android:layout_alignEnd="@id/profileUser"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="@string/change_profile_picture"
+                    android:src="@drawable/ic_edit" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/nameLabel"

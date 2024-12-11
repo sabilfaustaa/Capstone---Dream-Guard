@@ -11,6 +11,7 @@ import com.android.dreamguard.data.remote.models.UserProfile
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
@@ -19,8 +20,8 @@ class EditProfileViewModel(application: Application) : AndroidViewModel(applicat
 
     private val userPreferences = UserPreferences(application)
 
-    private val _userProfile = MutableLiveData<UserProfile>()
-    val userProfile: LiveData<UserProfile> get() = _userProfile
+    private val _userProfile = MutableLiveData<UserProfile?>()
+    val userProfile: LiveData<UserProfile?> get() = _userProfile
 
     private val _updateSuccess = MutableLiveData<Boolean>()
     val updateSuccess: LiveData<Boolean> get() = _updateSuccess
@@ -34,6 +35,15 @@ class EditProfileViewModel(application: Application) : AndroidViewModel(applicat
             _userProfile.value = profile
         } else {
             _errorMessage.value = "User profile not found in preferences."
+        }
+    }
+
+    private fun getMimeType(file: File): String {
+        val extension = file.extension.lowercase()
+        return when (extension) {
+            "jpg", "jpeg" -> "image/jpeg"
+            "png" -> "image/png"
+            else -> "application/octet-stream"
         }
     }
 
@@ -53,7 +63,7 @@ class EditProfileViewModel(application: Application) : AndroidViewModel(applicat
             return
         }
 
-        val requestBody = mutableMapOf<String, okhttp3.RequestBody>().apply {
+        val requestBody = mutableMapOf<String, RequestBody>().apply {
             name?.let { put("name", it.toRequestBody("text/plain".toMediaTypeOrNull())) }
             email?.let { put("email", it.toRequestBody("text/plain".toMediaTypeOrNull())) }
             age?.let { put("age", it.toString().toRequestBody("text/plain".toMediaTypeOrNull())) }
@@ -62,10 +72,11 @@ class EditProfileViewModel(application: Application) : AndroidViewModel(applicat
         }
 
         val profilePicturePart = profilePicture?.let {
+            val mimeType = getMimeType(it)
             MultipartBody.Part.createFormData(
                 "profilePicture",
                 it.name,
-                it.asRequestBody("image/*".toMediaTypeOrNull())
+                it.asRequestBody(mimeType.toMediaTypeOrNull())
             )
         }
 
@@ -81,10 +92,13 @@ class EditProfileViewModel(application: Application) : AndroidViewModel(applicat
                         userPreferences.saveUserProfile(updatedProfile)
                         _userProfile.value = updatedProfile
                         _updateSuccess.value = true
+                    } else {
+                        _errorMessage.value = "Failed to update profile: No data received."
                     }
                 } else {
                     _errorMessage.value = response.errorBody()?.string() ?: "Unknown error occurred."
                 }
+
             } catch (e: Exception) {
                 _errorMessage.value = e.localizedMessage
             }

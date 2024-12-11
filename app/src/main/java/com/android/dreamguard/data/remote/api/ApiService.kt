@@ -12,8 +12,9 @@ interface ApiService {
     suspend fun getUserProfile(): Response<RegisterResponse>
 
     @PATCH("/api/user/profile")
+    @Multipart
     suspend fun updateUserProfile(
-        @PartMap body: Map<String, RequestBody>,
+        @PartMap body: Map<String, @JvmSuppressWildcards RequestBody>,
         @Part profilePicture: MultipartBody.Part?
     ): Response<RegisterResponse>
 

@@ -67,6 +67,10 @@ class LoginActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener {
             navigateToOnBoarding()
         }
+
+        binding.loginText.setOnClickListener() {
+            navigateToRegister()
+        }
     }
 
     private fun observeViewModel() {
@@ -118,6 +122,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
+    private fun navigateToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
