@@ -2,6 +2,7 @@ package com.android.dreamguard.data.remote.api
 
 import com.android.dreamguard.data.remote.models.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -9,6 +10,12 @@ interface ApiService {
 
     @GET("/api/user/profile")
     suspend fun getUserProfile(): Response<RegisterResponse>
+
+    @PATCH("/api/user/profile")
+    suspend fun updateUserProfile(
+        @PartMap body: Map<String, RequestBody>,
+        @Part profilePicture: MultipartBody.Part?
+    ): Response<RegisterResponse>
 
     @GET("/api/user/statistics")
     suspend fun getHomePageData(): Response<HomePageResponse>

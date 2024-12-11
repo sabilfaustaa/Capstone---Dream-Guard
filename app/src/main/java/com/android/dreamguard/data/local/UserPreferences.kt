@@ -45,20 +45,21 @@ class UserPreferences(context: Context) {
         }
     }
 
-    fun getUserProfile(): UserProfile? {
-        val uid = preferences.getString(KEY_UID, null) ?: return null
+    fun getUserProfile(): UserProfile {
+        val uid = preferences.getString(KEY_UID, "") ?: ""
         return UserProfile(
             uid = uid,
             email = preferences.getString(KEY_USER_EMAIL, "") ?: "",
             name = preferences.getString(KEY_USER_NAME, "") ?: "",
-            age = preferences.getString(KEY_USER_AGE, null),
-            gender = preferences.getString(KEY_USER_GENDER, null),
-            occupation = preferences.getString(KEY_USER_OCCUPATION, null),
-            sleepGoal = preferences.getString(KEY_USER_SLEEP_GOAL, null),
-            profilePicture = preferences.getString(KEY_PROFILE_PICTURE, null),
+            age = preferences.getString(KEY_USER_AGE, "0"),
+            gender = preferences.getString(KEY_USER_GENDER, "male"),
+            occupation = preferences.getString(KEY_USER_OCCUPATION, "Unknown"),
+            sleepGoal = preferences.getString(KEY_USER_SLEEP_GOAL, "08:00 AM"),
+            profilePicture = preferences.getString(KEY_PROFILE_PICTURE, ""),
             createdAt = preferences.getString(KEY_CREATED_AT, "") ?: ""
         )
     }
+
 
     fun clear() {
         preferences.edit().clear().apply()

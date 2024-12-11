@@ -15,6 +15,7 @@ import com.android.dreamguard.data.local.UserPreferences
 import com.android.dreamguard.ui.auth.LoginActivity
 import com.android.dreamguard.ui.home.HomeActivity
 import com.android.dreamguard.ui.prediction.ActivityPrediction
+import com.android.dreamguard.ui.profile.EditProfileActivity
 import com.android.dreamguard.utils.CustomBottomNavigation
 import com.capstone.dreamguard.databinding.ActivitySettingsBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -102,6 +103,8 @@ class ActivitySettings : ComponentActivity() {
     }
 
     private fun navigateToEditProfile() {
-        // startActivity(Intent(this, EditProfileActivity::class.java))
+        val intent = Intent(this, EditProfileActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
     }
 }
