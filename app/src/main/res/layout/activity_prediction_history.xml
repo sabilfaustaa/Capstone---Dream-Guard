@@ -27,6 +27,18 @@
             android:textSize="20sp" />
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -61,7 +73,7 @@
                     android:text="@string/button_all"
                     android:textColor="@color/purple"
                     android:textSize="12sp"
-                    app:backgroundTint="@color/teal"
+                    app:backgroundTint="@color/white"
                     app:strokeColor="@color/purple"
                     tools:ignore="TouchTargetSizeCheck" />
 
@@ -121,7 +133,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 tools:listitem="@layout/item_history_prediction" />
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
