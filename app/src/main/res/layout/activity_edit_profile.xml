@@ -205,7 +205,8 @@
                     android:focusableInTouchMode="true"
                     android:fontFamily="@font/poppins_medium"
                     android:inputType="none"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+                    android:textColor="@color/white"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
