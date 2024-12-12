@@ -16,6 +16,7 @@ import com.android.dreamguard.ui.prediction.ActivityPrediction
 import com.android.dreamguard.ui.settings.ActivitySettings
 import com.android.dreamguard.utils.CustomBottomNavigation
 import android.view.LayoutInflater
+import android.widget.Toast
 import com.android.dreamguard.data.remote.models.HomePageData
 import com.android.dreamguard.ui.history.PredictionHistoryActivity
 import com.android.dreamguard.ui.schedule.list.SleepSchedulerActivity
@@ -23,6 +24,12 @@ import com.bumptech.glide.Glide
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.android.dreamguard.ui.result.ActivityResultInsomnia
+import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorder
+import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderStress
+import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderUnder8
+import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderUnderStress
+import com.android.dreamguard.ui.result.ActivityResultSleepApnea
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -111,6 +118,10 @@ class HomeActivity : ComponentActivity() {
             binding.predictionTitle.text = "Your last prediction result is"
             binding.predictionResult.text = it.predictionResultText
             binding.lastPredictionDate.text = it.createdAt
+            val predictionResultId = it.predictionResultId.toInt()
+            binding.insightsButton.setOnClickListener {
+                handlePredictionResult(predictionResultId)
+            }
         }
 
         // Update average cards
@@ -163,5 +174,30 @@ class HomeActivity : ComponentActivity() {
         val intent = Intent(this, SleepSchedulerActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)
+    }
+
+    private fun handlePredictionResult(predictionId: Int) {
+        Log.d("ActivityAnalyzing", "Prediction ID: $predictionId")
+        when (predictionId) {
+            1 -> navigateTo(ActivityResultNoSleepDisorder::class.java)
+            2 -> navigateTo(ActivityResultSleepApnea::class.java)
+            3 -> navigateTo(ActivityResultInsomnia::class.java)
+            4 -> navigateTo(ActivityResultNoSleepDisorderUnder8::class.java)
+            5 -> navigateTo(ActivityResultNoSleepDisorderStress::class.java)
+            6 -> navigateTo(ActivityResultNoSleepDisorderUnderStress::class.java)
+            else -> showError("Unknown prediction result.")
+        }
+    }
+
+    private fun navigateTo(activityClass: Class<*>) {
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showError(message: String?) {
+        val errorMessage = message ?: "Unknown error"
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+        Log.e("ActivityAnalyzing", errorMessage)
     }
 }
