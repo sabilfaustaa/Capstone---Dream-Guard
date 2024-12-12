@@ -18,14 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        if (!isFirstLaunch()) {
-            navigateTo()
-            finish()
-            return
-        }
-
-        setFirstLaunchCompleted()
-
         binding = ActivityGetStartedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -41,19 +33,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, ActivityPrediction::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
-    }
-
-    private fun isFirstLaunch(): Boolean {
-        val sharedPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
-        return sharedPreferences.getBoolean("is_first_launch", true)
-    }
-
-    private fun setFirstLaunchCompleted() {
-        val sharedPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
-        sharedPreferences.edit().putBoolean("is_first_launch", false).apply()
     }
 }
