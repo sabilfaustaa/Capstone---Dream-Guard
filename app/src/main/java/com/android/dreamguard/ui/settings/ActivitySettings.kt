@@ -95,11 +95,11 @@ class ActivitySettings : ComponentActivity() {
         if (!photoUrl.isNullOrEmpty()) {
             Glide.with(this)
                 .load(photoUrl)
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.default_profile)
+                .error(R.drawable.default_profile)
                 .into(binding.profileImage)
         } else {
-            binding.profileImage.setImageResource(R.drawable.ic_launcher_background)
+            binding.profileImage.setImageResource(R.drawable.default_profile)
         }
     }
 

@@ -106,8 +106,8 @@ class HomeActivity : ComponentActivity() {
         data.profilePicture?.let { url ->
             Glide.with(this)
                 .load(url)
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.default_profile)
+                .error(R.drawable.default_profile)
                 .into(binding.profilePicture)
         }
         binding.greetingText.text = "Good Morning, ${data.name ?: "User"}"
