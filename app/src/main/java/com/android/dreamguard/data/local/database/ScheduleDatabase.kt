@@ -12,15 +12,19 @@ abstract class ScheduleDatabase : RoomDatabase() {
     abstract fun scheduleDao(): ScheduleDao
 
     companion object {
-        @Volatile private var instance: ScheduleDatabase? = null
+        @Volatile
+        private var INSTANCE: ScheduleDatabase? = null
 
-        fun getInstance(context: Context): ScheduleDatabase =
-            instance ?: synchronized(this) {
-                instance ?: Room.databaseBuilder(
+        fun getInstance(context: Context): ScheduleDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ScheduleDatabase::class.java,
-                    "sleep_schedule_db"
-                ).build().also { instance = it }
+                    "schedule_database"
+                ).build()
+                INSTANCE = instance
+                instance
             }
+        }
     }
 }

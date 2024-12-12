@@ -16,7 +16,6 @@ import com.android.dreamguard.data.remote.models.SleepScheduleRequest
 import com.android.dreamguard.utils.AlarmReceiver
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class AddScheduleViewModel(private val context: Context) : ViewModel() {
@@ -62,7 +61,12 @@ class AddScheduleViewModel(private val context: Context) : ViewModel() {
                         )
                         dao.insertSchedule(localSchedule)
 
-                        setAlarm(localSchedule)
+                        // Set or cancel alarms based on values
+                        if (localSchedule.wakeUpAlarm == true || localSchedule.sleepReminders == true) {
+                            setAlarm(localSchedule)
+                        } else {
+                            cancelAlarm(localSchedule)
+                        }
                     }
                 } else {
                     _addScheduleResult.value = false
@@ -91,9 +95,32 @@ class AddScheduleViewModel(private val context: Context) : ViewModel() {
                 val response = apiService.updateSleepSchedule(scheduleId, request)
                 if (response.isSuccessful) {
                     _addScheduleResult.value = true
+                    val updatedSchedule = ScheduleEntity(
+                        id = scheduleId,
+                        bedTime = bedTime,
+                        wakeUpTime = wakeUpTime,
+                        wakeUpAlarm = wakeUpAlarm,
+                        sleepReminders = sleepReminders,
+                        plannedDuration = null,
+                        actualBedTime = null,
+                        actualWakeUpTime = null,
+                        actualDuration = null,
+                        difference = null,
+                        sleepQuality = null,
+                        notes = null,
+                        createdAt = null
+                    )
+                    dao.insertSchedule(updatedSchedule)
+
+                    // Set or cancel alarms based on values
+                    if (updatedSchedule.wakeUpAlarm == true || updatedSchedule.sleepReminders == true) {
+                        setAlarm(updatedSchedule)
+                    } else {
+                        cancelAlarm(updatedSchedule)
+                    }
                 } else {
                     _addScheduleResult.value = false
-                    _errorMessage.value = "Failed to add schedule: ${response.message()}"
+                    _errorMessage.value = "Failed to update schedule: ${response.message()}"
                 }
             } catch (e: Exception) {
                 _errorMessage.postValue("Error: ${e.message}")
@@ -113,9 +140,9 @@ class AddScheduleViewModel(private val context: Context) : ViewModel() {
             }
             val bedTimePendingIntent = PendingIntent.getBroadcast(
                 context,
-                schedule.localId * 2,
+                schedule.id.hashCode() * 2,
                 bedTimeIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE // Tambahkan FLAG_IMMUTABLE
             )
             alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
@@ -133,9 +160,9 @@ class AddScheduleViewModel(private val context: Context) : ViewModel() {
             }
             val wakeUpPendingIntent = PendingIntent.getBroadcast(
                 context,
-                schedule.localId * 2 + 1, // Unique ID for wake-up alarm
+                schedule.id.hashCode() * 2 + 1, // Unique ID for wake-up alarm
                 wakeUpIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE // Tambahkan FLAG_IMMUTABLE
             )
             alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
@@ -145,13 +172,35 @@ class AddScheduleViewModel(private val context: Context) : ViewModel() {
         }
     }
 
+    fun cancelAlarm(schedule: ScheduleEntity) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        // Cancel Bedtime Alarm
+        val bedTimeIntent = Intent(context, AlarmReceiver::class.java)
+        val bedTimePendingIntent = PendingIntent.getBroadcast(
+            context,
+            schedule.id.hashCode() * 2,
+            bedTimeIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE // Tambahkan FLAG_IMMUTABLE
+        )
+        alarmManager.cancel(bedTimePendingIntent)
+
+        // Cancel Wake Up Alarm
+        val wakeUpIntent = Intent(context, AlarmReceiver::class.java)
+        val wakeUpPendingIntent = PendingIntent.getBroadcast(
+            context,
+            schedule.id.hashCode() * 2 + 1,
+            wakeUpIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE // Tambahkan FLAG_IMMUTABLE
+        )
+        alarmManager.cancel(wakeUpPendingIntent)
+    }
+
     private fun parseTimeToCalendar(time: String): Calendar {
         val format = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
-        val date = format.parse(time) ?: Date()
+        val date = format.parse(time) ?: throw IllegalArgumentException("Invalid time format")
         return Calendar.getInstance().apply {
             this.time = date
         }
     }
-
-
 }

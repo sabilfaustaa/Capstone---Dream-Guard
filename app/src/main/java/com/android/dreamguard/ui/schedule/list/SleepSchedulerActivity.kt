@@ -1,7 +1,11 @@
 package com.android.dreamguard.ui.schedule.list
 
+import android.app.AlarmManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -38,6 +42,15 @@ class SleepSchedulerActivity : AppCompatActivity() {
         binding.editButton.setOnClickListener({
             navigateToSleepGoal()
         })
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            if (!alarmManager.canScheduleExactAlarms()) {
+                val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+                startActivity(intent)
+            }
+        }
+
 
         setupRecyclerView()
         setupObservers()
