@@ -58,7 +58,7 @@
     <string name="quest_age">How old are you?</string>
     <string name="quest_hour_sleep">How many hours do you \nsleep a day?</string>
     <string name="quest_scale_sleep">On a scale of 1 to 10, what is your sleep quality?</string>
-    <string name="quest_scale_stress">On a scale of 1 to 10, what is \nyour activity and stress level?</string>
+    <string name="quest_scale_stress">What is \nyour activity and stress level?</string>
     <string name="quest_scale_data">What is your weight (kg) \nand height (cm)?</string>
     <string name="quest_daily">How many daily steps do you take in a day?</string>
     <string name="quest_heart_rate">What is your current heart rate, systolic blood pressure, and diastolic blood pressure?</string>
