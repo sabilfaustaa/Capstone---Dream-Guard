@@ -5,15 +5,15 @@ object PredictionDataStore {
     var age: Int = 0
     var hoursOfSleep: Int = 0
     var occupation: Int = 0
-    var activityLevel: Int = 0 // Scale: 1-100
-    var stressLevel: Int = 0 // Scale: 1-10
-    var weight: Int = 0 // In kilograms
-    var height: Int = 0 // In centimeters
-    var heartRate: Int = 0 // Beats per minute
-    var systolic: Int = 0 // Systolic blood pressure
-    var diastolic: Int = 0 // Diastolic blood pressure
-    var dailySteps: Int = 0 // New property added
-    var sleepQuality: Int = 0 // Skala kualitas tidur (1-10)
+    var activityLevel: Int = 0
+    var stressLevel: Int = 0
+    var weight: Int = 0
+    var height: Int = 0
+    var heartRate: Int = 0
+    var systolic: Int = 0
+    var diastolic: Int = 0
+    var dailySteps: Int = 0
+    var sleepQuality: Int = 0
 
     fun reset() {
         gender = null
