@@ -3,6 +3,7 @@ package com.android.dreamguard.ui.prediction
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderStress
 import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderUnder8
 import com.android.dreamguard.ui.result.ActivityResultNoSleepDisorderUnderStress
 import com.android.dreamguard.ui.result.ActivityResultSleepApnea
+import com.capstone.dreamguard.R
 import com.capstone.dreamguard.databinding.ActivityAnalyzingBinding
 import kotlinx.coroutines.launch
 
@@ -31,6 +33,11 @@ class ActivityAnalyzing : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAnalyzingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        val moveUp = AnimationUtils.loadAnimation(this, R.anim.move_up)
+        binding.textView.startAnimation(fadeIn)
+        binding.textView.startAnimation(moveUp)
 
         submitPrediction()
     }
