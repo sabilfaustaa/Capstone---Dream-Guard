@@ -1,9 +1,11 @@
 package com.android.dreamguard.ui.schedule.goal
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.android.dreamguard.ui.schedule.list.SleepSchedulerActivity
 import com.android.dreamguard.ui.utils.NumberPickerDialog
 import com.capstone.dreamguard.R
 import com.capstone.dreamguard.databinding.ActivitySleepGoalBinding
@@ -64,11 +66,21 @@ class SleepGoalActivity : AppCompatActivity() {
                 currentMinutes
             ) { hours, minutes ->
                 viewModel.updateSleepGoal(hours, minutes)
+                navigateTo()
             }.show()
         }
     }
 
     private fun setupToolbar() {
-        binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener {
+            navigateTo()
+        }
+    }
+
+    private fun navigateTo() {
+        val intent = Intent(this, SleepSchedulerActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
     }
 }

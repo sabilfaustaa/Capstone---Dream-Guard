@@ -243,4 +243,5 @@
     <string name="label_sleep_quality">Sleep Quality</string>
     <string name="label_sleep_quality_desc">7: Good – \"Rested well, but not perfect.\"</string>
     <string name="hint_age">25</string>
+    <string name="input_time">input time</string>
 </resources>

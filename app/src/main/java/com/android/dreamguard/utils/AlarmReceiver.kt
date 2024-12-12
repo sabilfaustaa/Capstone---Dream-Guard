@@ -10,14 +10,17 @@ import com.capstone.dreamguard.R
 class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val title = intent.getStringExtra("TITLE") ?: "Alarm"
-        val notification = NotificationCompat.Builder(context, "ALARM_CHANNEL")
-            .setSmallIcon(R.drawable.icon_clock)
+        val message = intent.getStringExtra("MESSAGE") ?: "It's time!"
+
+        val notificationBuilder = NotificationCompat.Builder(context, "ALARM_CHANNEL")
+            .setSmallIcon(R.drawable.grey_clock)
             .setContentTitle(title)
-            .setContentText("Your scheduled time has arrived!")
+            .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .build()
+            .setAutoCancel(true)
 
         val notificationManager = NotificationManagerCompat.from(context)
-        notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+        notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
     }
 }
+

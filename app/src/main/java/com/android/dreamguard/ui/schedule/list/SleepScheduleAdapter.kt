@@ -45,7 +45,9 @@ class SleepScheduleAdapter(
             // Planned Data
             binding.labelPlannedText.text = binding.root.context.getString(R.string.label_planned)
             binding.labelClockWake.text = schedule.wakeUpTime ?: "N/A"
+            binding.labelClockBed.text = schedule.bedTime ?: "N/A"
             binding.labelClockDuration.text = schedule.plannedDuration ?: "N/A"
+            binding.cardContentText.text = schedule.createdAt ?: "-"
 
             if (schedule.actualBedTime.isNullOrEmpty() || schedule.actualWakeUpTime.isNullOrEmpty()) {
                 binding.actualButton.visibility = View.VISIBLE

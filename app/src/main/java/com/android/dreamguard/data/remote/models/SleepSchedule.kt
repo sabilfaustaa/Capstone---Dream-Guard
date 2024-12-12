@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SleepSchedule(
-    val id: String,
+    val id: String = "",
     val bedTime: String?,
     val wakeUpTime: String?,
     val wakeUpAlarm: Boolean?,
