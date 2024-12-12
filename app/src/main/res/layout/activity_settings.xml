@@ -24,7 +24,7 @@
             android:id="@+id/profileImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:contentDescription="Profile Image"
+            android:contentDescription="@string/image"
             android:src="@drawable/ic_launcher_background"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.Corner.Full"  />
 

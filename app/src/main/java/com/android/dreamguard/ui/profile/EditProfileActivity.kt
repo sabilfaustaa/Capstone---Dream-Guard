@@ -142,24 +142,31 @@ class EditProfileActivity : AppCompatActivity() {
         when (isMale) {
             true -> {
                 binding.maleButton.isSelected = true
-                binding.maleButton.setBackgroundColor(getColor(R.color.teal))
+                binding.maleButton.setBackgroundColor(getColor(R.color.purple))
+                binding.maleButton.setTextColor(getColor(R.color.white))
                 binding.femaleButton.isSelected = false
-                binding.femaleButton.setBackgroundColor(getColor(R.color.purple))
+                binding.femaleButton.setBackgroundColor(getColor(R.color.white))
+                binding.femaleButton.setTextColor(getColor(R.color.black))
             }
             false -> {
                 binding.femaleButton.isSelected = true
-                binding.femaleButton.setBackgroundColor(getColor(R.color.teal))
+                binding.femaleButton.setBackgroundColor(getColor(R.color.purple))
+                binding.femaleButton.setTextColor(getColor(R.color.white))
                 binding.maleButton.isSelected = false
-                binding.maleButton.setBackgroundColor(getColor(R.color.purple))
+                binding.maleButton.setBackgroundColor(getColor(R.color.white))
+                binding.maleButton.setTextColor(getColor(R.color.black))
             }
             else -> {
                 binding.maleButton.isSelected = false
                 binding.femaleButton.isSelected = false
-                binding.maleButton.setBackgroundColor(getColor(R.color.purple))
-                binding.femaleButton.setBackgroundColor(getColor(R.color.purple))
+                binding.maleButton.setBackgroundColor(getColor(R.color.white))
+                binding.femaleButton.setBackgroundColor(getColor(R.color.white))
+                binding.maleButton.setTextColor(getColor(R.color.black))
+                binding.femaleButton.setTextColor(getColor(R.color.black))
             }
         }
     }
+
 
     private fun navigateToHome() {
         val intent = Intent(this, HomeActivity::class.java)

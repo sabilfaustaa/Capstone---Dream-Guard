@@ -3,6 +3,7 @@ package com.android.dreamguard.ui.prediction
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import com.capstone.dreamguard.R
 import com.android.dreamguard.data.local.datastore.PredictionDataStore
 import com.capstone.dreamguard.databinding.ActivityPrediction6Binding
@@ -63,11 +64,13 @@ class ActivityPrediction6 : AppCompatActivity() {
             }
         }
 
+
         binding.predictButton.setOnClickListener {
             PredictionDataStore.activityLevel = activityLevel
             PredictionDataStore.stressLevel = stressLevel
             proceedToNextStep()
         }
+
     }
 
     private fun updateActivityLevelDisplay() {
@@ -76,7 +79,9 @@ class ActivityPrediction6 : AppCompatActivity() {
 
     private fun updateStressLevelDisplay() {
         binding.stressNumber.setText(stressLevel.toString())
+
     }
+
 
     private fun proceedToNextStep() {
         if (activityLevel !in 1..100 || stressLevel !in 1..100) {

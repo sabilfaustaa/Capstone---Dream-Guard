@@ -215,6 +215,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality10"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -227,6 +228,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality10"
                         android:textColor="@color/gray"
@@ -246,6 +248,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality9"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -258,6 +261,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality9"
                         android:textColor="@color/gray"
@@ -277,6 +281,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality8"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -289,6 +294,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality8"
                         android:textColor="@color/gray"
@@ -308,11 +314,12 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality7"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
                         android:contentDescription="@string/icon"
-                        android:src="@drawable/qual_purple" />
+                        android:src="@drawable/qual_teal" />
 
                     <!-- Teks utama -->
                     <TextView
@@ -320,6 +327,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality7"
                         android:textColor="@color/gray"
@@ -339,6 +347,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality6"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -351,6 +360,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality6"
                         android:textColor="@color/gray"
@@ -370,6 +380,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality5"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -382,6 +393,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality5"
                         android:textColor="@color/gray"
@@ -401,6 +413,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality4"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -413,6 +426,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality4"
                         android:textColor="@color/gray"
@@ -432,6 +446,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality3"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -444,6 +459,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality3"
                         android:textColor="@color/gray"
@@ -463,6 +479,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality2"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -475,6 +492,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality2"
                         android:textColor="@color/gray"
@@ -494,6 +512,7 @@
 
                     <!-- Ikon di awal -->
                     <ImageView
+                        android:id="@+id/imageQuality1"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="5dp"
@@ -506,6 +525,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quality1"
                         android:textColor="@color/gray"
@@ -548,27 +568,33 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/notesEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:alpha="0"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
             app:boxStrokeColor="@color/purple"
-            app:boxStrokeWidth="2dp"
+            app:boxStrokeWidth="3dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_note_quality"
-            tools:alpha="100">
+            app:layout_constraintTop_toBottomOf="@+id/title_note_quality">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/currentEditText"
                 android:layout_width="match_parent"
-                android:layout_height="202dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textMultiLine"
+                android:maxLength="100"
+                android:padding="10dp"
+                android:textColorHint="@color/gray"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/notes_text"
