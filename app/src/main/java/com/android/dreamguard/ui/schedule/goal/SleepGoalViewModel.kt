@@ -10,8 +10,8 @@ import kotlinx.coroutines.launch
 
 class SleepGoalViewModel(private val context: Context) : ViewModel() {
 
-    private val _sleepGoal = MutableLiveData<String>()
-    val sleepGoal: LiveData<String> get() = _sleepGoal
+    private val _sleepGoal = MutableLiveData<Pair<Int, Int>>() // Hours and Minutes
+    val sleepGoal: LiveData<Pair<Int, Int>> get() = _sleepGoal
 
     private val _updateSuccess = MutableLiveData<Boolean>()
     val updateSuccess: LiveData<Boolean> get() = _updateSuccess
@@ -25,7 +25,10 @@ class SleepGoalViewModel(private val context: Context) : ViewModel() {
             try {
                 val response = apiService.getSleepGoals()
                 if (response.isSuccessful) {
-                    _sleepGoal.value = response.body()?.data?.sleepGoal ?: "08:00"
+                    val sleepGoal = response.body()?.sleepGoal?.split(" ") // e.g., "8h 30m"
+                    val hours = sleepGoal?.getOrNull(0)?.replace("h", "")?.toIntOrNull() ?: 8
+                    val minutes = sleepGoal?.getOrNull(1)?.replace("m", "")?.toIntOrNull() ?: 0
+                    _sleepGoal.value = Pair(hours, minutes)
                 } else {
                     _errorMessage.value = "Failed to fetch sleep goal: ${response.message()}"
                 }
@@ -35,13 +38,15 @@ class SleepGoalViewModel(private val context: Context) : ViewModel() {
         }
     }
 
-    fun updateSleepGoal(newSleepGoal: String) {
+    fun updateSleepGoal(hours: Int, minutes: Int) {
         val apiService = ApiConfig.getApiService(context)
         viewModelScope.launch {
             try {
-                val response = apiService.updateSleepGoals(mapOf("sleepGoal" to newSleepGoal.toInt()))
+                val requestBody = mapOf("hours" to hours, "minutes" to minutes)
+                val response = apiService.updateSleepGoals(requestBody)
                 if (response.isSuccessful) {
                     _updateSuccess.value = true
+                    _sleepGoal.value = Pair(hours, minutes)
                 } else {
                     _updateSuccess.value = false
                     _errorMessage.value = "Failed to update sleep goal: ${response.message()}"

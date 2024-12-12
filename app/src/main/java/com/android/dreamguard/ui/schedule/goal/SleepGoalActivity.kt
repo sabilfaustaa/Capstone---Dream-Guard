@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.dreamguard.ui.utils.NumberPickerDialog
 import com.capstone.dreamguard.R
 import com.capstone.dreamguard.databinding.ActivitySleepGoalBinding
-import java.util.Locale
 
 class SleepGoalActivity : AppCompatActivity() {
 
@@ -15,8 +14,6 @@ class SleepGoalActivity : AppCompatActivity() {
     private val viewModel: SleepGoalViewModel by viewModels {
         SleepGoalViewModelFactory(this)
     }
-
-    private var sleepGoal: String = "08:30"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +23,20 @@ class SleepGoalActivity : AppCompatActivity() {
         setupToolbar()
         setupObservers()
         setupActions()
+
+        viewModel.fetchSleepGoal()
     }
 
     private fun setupObservers() {
         viewModel.sleepGoal.observe(this) { goal ->
             if (goal != null) {
-                sleepGoal = goal
-                updateSleepGoalUI(goal)
+                updateSleepGoalUI(goal.first, goal.second)
+            }
+        }
+
+        viewModel.updateSuccess.observe(this) { success ->
+            if (success) {
+                Toast.makeText(this, "Sleep goal updated successfully", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -43,28 +47,23 @@ class SleepGoalActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateSleepGoalUI(goal: String) {
-        val timeParts = goal.split(":")
-        val hour = timeParts[0].toInt()
-        val minute = timeParts[1].toInt()
-
-        binding.textHours.text = hour.toString().padStart(2, '0')
-        binding.textMinutes.text = minute.toString().padStart(2, '0')
+    private fun updateSleepGoalUI(hours: Int, minutes: Int) {
+        binding.textHours.text = hours.toString().padStart(2, '0')
+        binding.textMinutes.text = minutes.toString().padStart(2, '0')
     }
 
     private fun setupActions() {
-        binding.cardHours.setOnClickListener {
-            val currentHour = sleepGoal.split(":")[0].toInt()
-            val currentMinute = sleepGoal.split(":")[1].toInt()
+        binding.goalButton.setOnClickListener {
+            val currentHours = binding.textHours.text.toString().toInt()
+            val currentMinutes = binding.textMinutes.text.toString().toInt()
 
             NumberPickerDialog(
                 this,
                 "Set Sleep Goal",
-                currentHour,
-                currentMinute
-            ) { hour, minute ->
-                val updatedSleepGoal = String.format("%02d:%02d", hour, minute)
-                viewModel.updateSleepGoal(updatedSleepGoal)
+                currentHours,
+                currentMinutes
+            ) { hours, minutes ->
+                viewModel.updateSleepGoal(hours, minutes)
             }.show()
         }
     }
@@ -73,4 +72,3 @@ class SleepGoalActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener { finish() }
     }
 }
-

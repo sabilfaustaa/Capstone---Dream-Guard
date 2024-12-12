@@ -51,7 +51,7 @@ class SleepScheduleViewModel(private val context: Context) : ViewModel() {
             try {
                 val response = apiService.getSleepGoals()
                 if (response.isSuccessful) {
-                    _sleepGoal.value = response.body()?.data?.sleepGoal ?: "N/A"
+                    _sleepGoal.value = response.body()?.sleepGoal ?: "N/A"
                 } else {
                     _errorMessage.value = "Failed to fetch sleep goal: ${response.message()}"
                 }
