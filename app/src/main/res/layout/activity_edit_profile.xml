@@ -70,11 +70,12 @@
                     android:id="@+id/profileChangeButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_alignBottom="@id/profileUser"
                     android:layout_alignEnd="@id/profileUser"
+                    android:layout_alignBottom="@id/profileUser"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="@string/change_profile_picture"
-                    android:src="@drawable/ic_edit" />
+                    android:src="@drawable/ic_edit"
+                    tools:ignore="TouchTargetSizeCheck" />
             </RelativeLayout>
 
             <TextView
@@ -220,7 +221,8 @@
                     android:focusableInTouchMode="true"
                     android:fontFamily="@font/poppins_medium"
                     android:inputType="none"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+                    android:textColor="@color/white"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
