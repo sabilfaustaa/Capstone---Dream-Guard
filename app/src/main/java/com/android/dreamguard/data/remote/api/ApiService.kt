@@ -26,6 +26,11 @@ interface ApiService {
         @Body requestBody: Map<String, String>
     ): Response<RegisterResponse>
 
+    @DELETE("/api/user/account")
+    suspend fun deleteUserAccount(
+        @Header("Authorization") authorization: String
+    ): Response<Unit>
+
     @POST("api/user/predictions")
     suspend fun addNewPrediction(
         @Body predictionData: Map<String, Int>
@@ -60,4 +65,9 @@ interface ApiService {
 
     @GET("/api/user/sleep-goals")
     suspend fun getSleepGoals(): Response<SleepGoalResponse>
+
+    @POST("/api/user/feedback")
+    suspend fun addFeedback(
+        @Body feedbackBody: Map<String, String>
+    ): Response<Unit>
 }

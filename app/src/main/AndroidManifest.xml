@@ -55,6 +55,8 @@
         <activity android:name="com.android.dreamguard.ui.schedule.goal.SleepGoalActivity" android:theme="@style/Theme.DreamGuard" />
 
         <activity android:name="com.android.dreamguard.ui.profile.EditProfileActivity" android:theme="@style/Theme.DreamGuard" />
+        <activity android:name="com.android.dreamguard.ui.changepassword.ChangePasswordActivity" android:theme="@style/Theme.DreamGuard" />
+        <activity android:name="com.android.dreamguard.ui.feedback.FeedbackActivity" android:theme="@style/Theme.DreamGuard" />
 
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction" />
         <activity android:name="com.android.dreamguard.ui.prediction.ActivityPrediction2" />
