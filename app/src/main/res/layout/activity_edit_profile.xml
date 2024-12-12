@@ -183,8 +183,7 @@
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/button_occupation"
+                android:layout_height="wrap_content"
                 android:textColorHint="@color/white"
                 app:boxBackgroundColor="@color/purple"
                 app:boxCornerRadiusBottomEnd="30dp"
@@ -201,12 +200,13 @@
                 <AutoCompleteTextView
                     android:id="@+id/exposedDropdown"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:fontFamily="@font/poppins_medium"
                     android:inputType="none"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
