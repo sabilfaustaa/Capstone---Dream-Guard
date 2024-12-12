@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.ComponentActivity
@@ -84,21 +85,21 @@ class ActivitySettings : ComponentActivity() {
     }
 
     private fun loadUserProfile(binding: ActivitySettingsBinding) {
-        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userProfile = userPreferences.getUserProfile()
+        Log.d("Profile_Preferences", userProfile.toString())
 
-        currentUser?.let { user ->
-            val name = user.displayName ?: "User"
-            val email = user.email ?: "No email available"
-            val photoUrl = user.photoUrl
+        binding.profileName.text = userProfile.name ?: "User"
+        binding.profileEmail.text = userProfile.email ?: "No email available"
 
-            binding.profileName.text = name
-            binding.profileEmail.text = email
-
+        val photoUrl = userProfile.profilePicture
+        if (!photoUrl.isNullOrEmpty()) {
             Glide.with(this)
                 .load(photoUrl)
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(binding.profileImage)
+        } else {
+            binding.profileImage.setImageResource(R.drawable.ic_launcher_background)
         }
     }
 
