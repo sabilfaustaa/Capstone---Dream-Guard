@@ -69,6 +69,15 @@ class AddScheduleActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.updateScheduleResult.observe(this) { success ->
+            if (success) {
+                Toast.makeText(this, "Schedule edit successfully", Toast.LENGTH_SHORT).show()
+                navigateToSleepScheduleList()
+            } else {
+                Toast.makeText(this, "Failed to save schedule", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         viewModel.errorMessage.observe(this) { error ->
             error?.let {
                 Log.e("AddScheduleActivity", "Error: $it")
