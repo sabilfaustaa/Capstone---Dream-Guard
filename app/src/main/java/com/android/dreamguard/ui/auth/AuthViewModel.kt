@@ -9,7 +9,10 @@ import com.android.dreamguard.data.local.UserPreferences
 import com.android.dreamguard.data.remote.api.ApiConfig
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
     private val firebaseAuth = FirebaseAuth.getInstance()
@@ -55,15 +58,24 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     fun googleSignIn(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
-        firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    fetchUserProfile()
-                } else {
-                    _errorMessage.value = task.exception?.message ?: "Google Sign-In failed"
+        viewModelScope.launch {
+            try {
+                val authResult = withContext(Dispatchers.IO) {
+                    firebaseAuth.signInWithCredential(credential).await()
                 }
+
+                val token = authResult.user?.getIdToken(true)?.await()?.token
+                    ?: throw Exception("Failed to retrieve token")
+
+                saveTokenToPreferences(token)
+                fetchUserProfile()
+                _authState.value = true
+            } catch (e: Exception) {
+                _errorMessage.value = e.localizedMessage ?: "Google Sign-In failed"
             }
+        }
     }
+
 
     fun fetchUserProfile() {
         viewModelScope.launch {
