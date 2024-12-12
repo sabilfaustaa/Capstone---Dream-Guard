@@ -205,28 +205,31 @@
             android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/purple"
+            android:fontFamily="@font/poppins_medium"
             android:minWidth="380dp"
             android:minHeight="60dp"
             android:text="@string/button_register"
-            android:textAlignment="center"
-            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
             app:cornerRadius="7dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/repasswordEditTextLayout" />
 
         <ProgressBar
-            android:id="@+id/loadingProgressBar"
+            android:id="@+id/registerProgressBar"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:visibility="gone"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@id/registerButton"
-            app:layout_constraintStart_toStartOf="@id/registerButton"
-            app:layout_constraintTop_toTopOf="@id/registerButton"
-            app:layout_constraintBottom_toBottomOf="@id/registerButton" />
+            android:indeterminate="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/registerButton"
+            app:layout_constraintStart_toStartOf="@+id/registerButton"
+            app:layout_constraintTop_toTopOf="@+id/registerButton"
+            app:layout_constraintBottom_toBottomOf="@+id/registerButton" />
 
         <LinearLayout
             android:id="@+id/legend"
@@ -267,6 +270,7 @@
                 android:background="@color/gray" />
         </LinearLayout>
 
+
         <Button
             android:id="@+id/registerButtonGoogle"
             style="?attr/materialButtonOutlinedStyle"
@@ -287,6 +291,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/legend"
             app:strokeColor="@color/gray" />
+
+        <ProgressBar
+            android:id="@+id/googleProgressBar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/registerButtonGoogle"
+            app:layout_constraintStart_toStartOf="@+id/registerButtonGoogle"
+            app:layout_constraintTop_toTopOf="@+id/registerButtonGoogle"
+            app:layout_constraintBottom_toBottomOf="@+id/registerButtonGoogle" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -322,7 +340,6 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

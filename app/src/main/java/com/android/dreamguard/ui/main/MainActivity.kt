@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, ActivityPrediction::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

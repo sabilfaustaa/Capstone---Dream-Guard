@@ -42,6 +42,7 @@ class SleepScheduleAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(schedule: SleepSchedule) {
+            // Planned Data
             binding.labelPlannedText.text = binding.root.context.getString(R.string.label_planned)
             binding.labelClockWake.text = schedule.wakeUpTime ?: "N/A"
             binding.labelClockDuration.text = schedule.plannedDuration ?: "N/A"
@@ -49,26 +50,32 @@ class SleepScheduleAdapter(
             if (schedule.actualBedTime.isNullOrEmpty() || schedule.actualWakeUpTime.isNullOrEmpty()) {
                 binding.actualButton.visibility = View.VISIBLE
                 binding.linearActual.visibility = View.GONE
-                binding.actualButton.setOnClickListener {
-                    onActualDataClick(schedule)
-                }
+
                 binding.labelClockDurationActual.text = "--"
                 binding.labelClockWakeTimeActual.text = "--"
                 binding.labelClockDurationActual2.text = "--"
                 binding.labelClockDifferentTimeActual.text = "--"
+                binding.labelNotesDesc.text = "--"
+                binding.labelSleepQualityDesc.text = "--"
+
+                binding.actualButton.setOnClickListener {
+                    onActualDataClick(schedule)
+                }
             } else {
                 binding.actualButton.visibility = View.GONE
                 binding.linearActual.visibility = View.VISIBLE
+
                 binding.labelClockDurationActual.text = schedule.actualBedTime
                 binding.labelClockWakeTimeActual.text = schedule.actualWakeUpTime
                 binding.labelClockDurationActual2.text = schedule.actualDuration ?: "N/A"
                 binding.labelClockDifferentTimeActual.text = schedule.difference ?: "N/A"
+                binding.labelNotesDesc.text = schedule.notes ?: "No notes available"
+                binding.labelSleepQualityDesc.text = schedule.sleepQuality ?: "Not rated"
             }
 
             binding.editButton.setOnClickListener {
                 onEditClick(schedule)
             }
-
         }
     }
 }

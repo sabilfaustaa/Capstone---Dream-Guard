@@ -12,8 +12,9 @@ interface ApiService {
     suspend fun getUserProfile(): Response<RegisterResponse>
 
     @PATCH("/api/user/profile")
+    @Multipart
     suspend fun updateUserProfile(
-        @PartMap body: Map<String, RequestBody>,
+        @PartMap body: Map<String, @JvmSuppressWildcards RequestBody>,
         @Part profilePicture: MultipartBody.Part?
     ): Response<RegisterResponse>
 
@@ -24,6 +25,11 @@ interface ApiService {
     suspend fun registerNewUser(
         @Body requestBody: Map<String, String>
     ): Response<RegisterResponse>
+
+    @DELETE("/api/user/account")
+    suspend fun deleteUserAccount(
+        @Header("Authorization") authorization: String
+    ): Response<Unit>
 
     @POST("api/user/predictions")
     suspend fun addNewPrediction(
@@ -59,4 +65,9 @@ interface ApiService {
 
     @GET("/api/user/sleep-goals")
     suspend fun getSleepGoals(): Response<SleepGoalResponse>
+
+    @POST("/api/user/feedback")
+    suspend fun addFeedback(
+        @Body feedbackBody: Map<String, String>
+    ): Response<Unit>
 }
