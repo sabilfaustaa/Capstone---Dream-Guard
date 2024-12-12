@@ -104,14 +104,25 @@
                     android:contentDescription="@string/image"
                     app:icon="@drawable/icon_min" />
 
-                <TextView
-                    android:id="@+id/ageNumberStr"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutActivityNumber"
                     android:layout_width="wrap_content"
+                    android:minWidth="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/embed_age_num"
-                    android:textSize="22sp" />
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:inputType="number"
+                        android:textSize="22sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
                     android:id="@+id/iconPlusButtonStr"
@@ -153,14 +164,26 @@
                     android:contentDescription="@string/image"
                     app:icon="@drawable/icon_min" />
 
-                <TextView
-                    android:id="@+id/ageNumber"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutStressNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/embed_age_num"
-                    android:textSize="22sp" />
+                    android:minWidth="80dp"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/stressNumber"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:inputType="number"
+                        android:textSize="22sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
                     android:id="@+id/iconPlusButton"

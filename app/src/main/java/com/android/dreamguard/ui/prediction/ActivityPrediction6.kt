@@ -56,7 +56,7 @@ class ActivityPrediction6 : AppCompatActivity() {
             }
         }
 
-        binding.iconMinButton.setOnClickListener {
+        binding.iconPlusButton.setOnClickListener {
             if (stressLevel < 100) {
                 stressLevel++
                 updateStressLevelDisplay()
@@ -71,11 +71,11 @@ class ActivityPrediction6 : AppCompatActivity() {
     }
 
     private fun updateActivityLevelDisplay() {
-        binding.ageNumberStr.text = activityLevel.toString()
+        binding.activityNumber.setText(activityLevel.toString())
     }
 
     private fun updateStressLevelDisplay() {
-        binding.ageNumberStr.text = stressLevel.toString()
+        binding.stressNumber.setText(stressLevel.toString())
     }
 
     private fun proceedToNextStep() {

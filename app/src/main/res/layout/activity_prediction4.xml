@@ -19,10 +19,10 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,9 +77,9 @@
                 android:id="@+id/buttonWrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/iconMinButton"
@@ -90,14 +90,24 @@
                     android:contentDescription="@string/image"
                     app:icon="@drawable/icon_min" />
 
-                <TextView
-                    android:id="@+id/ageNumber"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutSleepQualityNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/embed_age_num"
-                    android:textSize="22sp" />
+                    android:minWidth="80dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sleepQualityNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:inputType="number"
+                        android:textSize="22sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/iconPlusButton"

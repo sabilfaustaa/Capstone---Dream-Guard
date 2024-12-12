@@ -100,7 +100,7 @@
                 android:layout_marginTop="8dp">
 
                 <Button
-                    android:id="@+id/iconMinButton"
+                    android:id="@+id/iconMinButtonHeight"
                     style="?attr/materialIconButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -108,17 +108,28 @@
                     android:contentDescription="@string/image"
                     app:icon="@drawable/icon_min" />
 
-                <TextView
-                    android:id="@+id/ageNumber"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutHeightNumber"
                     android:layout_width="wrap_content"
+                    android:minWidth="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/embed_hg"
-                    android:textSize="20sp" />
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/heightNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:inputType="number"
+                        android:textSize="22sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
-                    android:id="@+id/iconPlusButton"
+                    android:id="@+id/iconPlusButtonHeight"
                     style="?attr/materialIconButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -148,7 +159,7 @@
                 android:layout_marginTop="8dp">
 
                 <Button
-                    android:id="@+id/iconMinButtonStr"
+                    android:id="@+id/iconMinButtonWeight"
                     style="?attr/materialIconButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,17 +167,28 @@
                     android:contentDescription="@string/image"
                     app:icon="@drawable/icon_min" />
 
-                <TextView
-                    android:id="@+id/ageNumberStr"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutWeightNumber"
                     android:layout_width="wrap_content"
+                    android:minWidth="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/embed_kg"
-                    android:textSize="20sp" />
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/weightNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:inputType="number"
+                        android:textSize="22sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
-                    android:id="@+id/iconPlusButtonStr"
+                    android:id="@+id/iconPlusButtonWeight"
                     style="?attr/materialIconButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

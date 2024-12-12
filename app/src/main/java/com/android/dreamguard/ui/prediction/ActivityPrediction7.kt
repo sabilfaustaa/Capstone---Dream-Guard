@@ -35,14 +35,14 @@ class ActivityPrediction7 : AppCompatActivity() {
 
     private fun setupListeners() {
         // Weight
-        binding.iconMinButtonStr.setOnClickListener {
+        binding.iconMinButtonWeight.setOnClickListener {
             if (weight > 1) {
                 weight--
                 updateWeightDisplay()
             }
         }
 
-        binding.iconPlusButtonStr.setOnClickListener {
+        binding.iconPlusButtonWeight.setOnClickListener {
             if (weight < 300) { // Max weight threshold
                 weight++
                 updateWeightDisplay()
@@ -50,14 +50,14 @@ class ActivityPrediction7 : AppCompatActivity() {
         }
 
         // Height
-        binding.iconMinButton.setOnClickListener {
+        binding.iconMinButtonHeight.setOnClickListener {
             if (height > 50) { // Min height threshold
                 height--
                 updateHeightDisplay()
             }
         }
 
-        binding.iconPlusButton.setOnClickListener {
+        binding.iconPlusButtonHeight.setOnClickListener {
             if (height < 250) { // Max height threshold
                 height++
                 updateHeightDisplay()
@@ -72,11 +72,11 @@ class ActivityPrediction7 : AppCompatActivity() {
     }
 
     private fun updateWeightDisplay() {
-        binding.ageNumberStr.text = "$weight kg"
+        binding.weightNumber.setText("$weight kg")
     }
 
     private fun updateHeightDisplay() {
-        binding.ageNumber.text = "$height cm"
+        binding.heightNumber.setText("$height cm")
     }
 
     private fun proceedToNextStep() {

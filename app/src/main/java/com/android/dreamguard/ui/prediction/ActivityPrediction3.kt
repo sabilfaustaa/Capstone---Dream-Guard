@@ -12,6 +12,7 @@ class ActivityPrediction3 : AppCompatActivity() {
     private lateinit var binding: ActivityPrediction3Binding
     private var hoursOfSleep: Int = 8
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrediction3Binding.inflate(layoutInflater)
@@ -52,7 +53,7 @@ class ActivityPrediction3 : AppCompatActivity() {
     }
 
     private fun updateSleepHoursDisplay() {
-        binding.ageNumber.text = hoursOfSleep.toString()
+        binding.sleepNumber.setText(hoursOfSleep.toString())
     }
 
     private fun proceedToNextStep() {
