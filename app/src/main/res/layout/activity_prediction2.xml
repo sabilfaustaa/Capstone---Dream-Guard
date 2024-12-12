@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,8 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:text="@string/question"
                 android:letterSpacing="0.1"
+                android:text="@string/question"
                 android:textColor="@color/purple"
                 android:textSize="20sp" />
 
@@ -78,14 +77,24 @@
                 android:contentDescription="@string/image"
                 app:icon="@drawable/icon_min" />
 
-            <TextView
-                android:id="@+id/ageNumber"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutAgeNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/embed_age_num"
-                android:textSize="22sp" />
+                android:minWidth="80dp"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="?attr/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ageNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:inputType="number"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/iconPlusButton"
@@ -115,10 +124,10 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
             android:maxWidth="340dp"
-            android:textSize="18sp"
             android:text="@string/describe_prediction_age"
             android:textAlignment="center"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/predictButton"
@@ -130,7 +139,7 @@
             android:minHeight="50dp"
             android:text="@string/button_predict"
             android:textSize="16sp"
-            app:cornerRadius="7dp"/>
+            app:cornerRadius="7dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stepperRecyclerView"

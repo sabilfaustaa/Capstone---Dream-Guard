@@ -52,7 +52,7 @@ class ActivityPrediction4 : AppCompatActivity() {
     }
 
     private fun updateQualityDisplay() {
-        binding.ageNumber.text = sleepQuality.toString()
+        binding.sleepQualityNumber.setText(sleepQuality.toString())
     }
 
     private fun proceedToNextStep() {

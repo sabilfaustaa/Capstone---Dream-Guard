@@ -43,7 +43,6 @@ class SleepScheduleAdapter(
 
         fun bind(schedule: SleepSchedule) {
             binding.labelPlannedText.text = binding.root.context.getString(R.string.label_planned)
-            binding.labelClockBedtime.text = schedule.bedTime ?: "N/A"
             binding.labelClockWake.text = schedule.wakeUpTime ?: "N/A"
             binding.labelClockDuration.text = schedule.plannedDuration ?: "N/A"
 

@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardMenu"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -78,18 +79,19 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="44dp"
+                android:layout_marginLeft="30dp"
                 android:backgroundTint="@color/teal"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:minWidth="100dp"
                 android:text="@string/edit_button"
                 android:textColor="@color/purple"
                 android:textSize="16sp"
-                android:layout_marginLeft="30dp"
                 app:icon="@drawable/edit_coloured"
                 app:iconGravity="textEnd"
                 app:iconPadding="6dp"
                 app:iconSize="14dp"
-                app:iconTint="@color/purple" />
+                app:iconTint="@color/purple"
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
 
@@ -140,12 +142,14 @@
                 android:text="@string/clock"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/linearwakeup"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layoutDirection="rtl"
@@ -175,7 +179,7 @@
 
         <LinearLayout
             android:id="@+id/label_wake_time"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
@@ -200,7 +204,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_bed_time">
+            app:layout_constraintTop_toBottomOf="@id/label_bed_time_clock">
 
             <ImageView
                 android:layout_width="24dp"
@@ -211,7 +215,7 @@
 
             <TextView
                 android:id="@+id/label_duration"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins_semi_bold"
@@ -222,7 +226,7 @@
 
         <LinearLayout
             android:id="@+id/label_duration_time"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -241,21 +245,13 @@
 
         <LinearLayout
             android:id="@+id/label_bed_time"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linear_bedtime">
 
-            <TextView
-                android:id="@+id/label_clock_bedtime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/clock"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
         </LinearLayout>
 
 
@@ -388,7 +384,7 @@
 
         <LinearLayout
             android:id="@+id/linear_wake_actual"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layoutDirection="rtl"
@@ -418,7 +414,7 @@
 
         <LinearLayout
             android:id="@+id/label_wake_time_actual"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
@@ -438,7 +434,7 @@
 
         <LinearLayout
             android:id="@+id/linear_difference_actual"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layoutDirection="rtl"
@@ -467,13 +463,13 @@
 
         <LinearLayout
             android:id="@+id/label_different_time_actual"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_duration_actual">
+            app:layout_constraintTop_toBottomOf="@id/linear_difference_actual">
 
             <TextView
                 android:id="@+id/label_clock_different_time_actual"
@@ -483,6 +479,115 @@
                 android:text="@string/clock"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:dividerThickness="3dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_different_time_actual" />
+
+
+        <LinearLayout
+            android:id="@+id/linear_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2">
+
+            <!-- Ikon di awal -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/icon_burger"
+                app:tint="@color/lightGray" />
+
+            <!-- Teks utama -->
+            <TextView
+                android:id="@+id/label_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/label_notes"
+                android:textColor="@color/lightGray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/label_notesDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_notes">
+
+            <TextView
+                android:id="@+id/label_notes_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/label_notes_desc"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linear_sleep_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_notesDesc">
+
+            <!-- Ikon di awal -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/icon_sleep"
+                app:tint="@color/lightGray" />
+
+            <!-- Teks utama -->
+            <TextView
+                android:id="@+id/label_sleep_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/label_sleep_quality"
+                android:textColor="@color/lightGray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_sleepQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_sleep_quality">
+
+            <TextView
+                android:id="@+id/label_sleep_quality_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/label_sleep_quality_desc"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button
@@ -501,6 +606,14 @@
             app:iconSize="12dp"
             app:iconTint="@color/purple"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_duration_time_actual2" />
+            app:layout_constraintTop_toBottomOf="@id/linear_sleepQuality" />
+
+
+
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

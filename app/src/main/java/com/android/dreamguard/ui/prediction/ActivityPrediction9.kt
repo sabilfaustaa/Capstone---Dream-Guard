@@ -31,24 +31,24 @@ class ActivityPrediction9 : AppCompatActivity() {
 
     private fun setupListeners() {
         binding.iconPlusButtonStr.setOnClickListener {
-            updateValue(binding.ageNumber1, 1)
+            updateValue(binding.heartRateNumber, 1)
         }
         binding.iconMinButton1.setOnClickListener {
-            updateValue(binding.ageNumber1, -1)
+            updateValue(binding.heartRateNumber, -1)
         }
 
         binding.iconPlusButton2.setOnClickListener {
-            updateValue(binding.ageNumber2, 1)
+            updateValue(binding.systolicNumber, 1)
         }
         binding.iconMinButton2.setOnClickListener {
-            updateValue(binding.ageNumber2, -1)
+            updateValue(binding.systolicNumber, -1)
         }
 
         binding.iconPlusButton3.setOnClickListener {
-            updateValue(binding.ageNumber3, 1)
+            updateValue(binding.diastolicNumber, 1)
         }
         binding.iconMinButton3.setOnClickListener {
-            updateValue(binding.ageNumber3, -1)
+            updateValue(binding.diastolicNumber, -1)
         }
 
         binding.predictButton.setOnClickListener {
@@ -65,23 +65,24 @@ class ActivityPrediction9 : AppCompatActivity() {
         textView.text = newValue.toString()
 
         when (textView) {
-            binding.ageNumber1 -> PredictionDataStore.heartRate = newValue
-            binding.ageNumber2 -> PredictionDataStore.systolic = newValue
-            binding.ageNumber3 -> PredictionDataStore.diastolic = newValue
+            binding.heartRateNumber -> PredictionDataStore.heartRate = newValue
+            binding.systolicNumber -> PredictionDataStore.systolic = newValue
+            binding.diastolicNumber -> PredictionDataStore.diastolic = newValue
         }
     }
 
     private fun initializeValues() {
-        binding.ageNumber1.text = (PredictionDataStore.heartRate.takeIf { it > 0 } ?: 90).toString()
-        binding.ageNumber2.text = (PredictionDataStore.systolic.takeIf { it > 0 } ?: 160).toString()
-        binding.ageNumber3.text = (PredictionDataStore.diastolic.takeIf { it > 0 } ?: 50).toString()
+        binding.heartRateNumber.setText((PredictionDataStore.heartRate.takeIf { it > 0 } ?: 90).toString())
+        binding.systolicNumber.setText((PredictionDataStore.systolic.takeIf { it > 0 } ?: 160).toString())
+        binding.diastolicNumber.setText((PredictionDataStore.diastolic.takeIf { it > 0 } ?: 50).toString())
+
     }
 
     private fun validateInputs(): Boolean {
         return try {
-            binding.ageNumber1.text.toString().toInt()
-            binding.ageNumber2.text.toString().toInt()
-            binding.ageNumber3.text.toString().toInt()
+            binding.heartRateNumber.text.toString().toInt()
+            binding.systolicNumber.text.toString().toInt()
+            binding.diastolicNumber.text.toString().toInt()
             true
         } catch (e: NumberFormatException) {
             showError("Please ensure all inputs are valid numbers.")
@@ -91,9 +92,9 @@ class ActivityPrediction9 : AppCompatActivity() {
 
     private fun saveInputData() {
         try {
-            PredictionDataStore.heartRate = binding.ageNumber1.text.toString().toInt()
-            PredictionDataStore.systolic = binding.ageNumber2.text.toString().toInt()
-            PredictionDataStore.diastolic = binding.ageNumber3.text.toString().toInt()
+            PredictionDataStore.heartRate = binding.heartRateNumber.text.toString().toInt()
+            PredictionDataStore.systolic = binding.systolicNumber.text.toString().toInt()
+            PredictionDataStore.diastolic = binding.diastolicNumber.text.toString().toInt()
         } catch (e: Exception) {
             showError("Error saving input data: ${e.message}")
         }

@@ -52,7 +52,7 @@ class ActivityPrediction2 : AppCompatActivity() {
     }
 
     private fun updateAgeDisplay() {
-        binding.ageNumber.text = age.toString()
+        binding.ageNumber.setText(age.toString())
     }
 
     private fun proceedToNextStep() {

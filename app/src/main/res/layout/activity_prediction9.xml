@@ -105,14 +105,25 @@
                 android:contentDescription="@string/image"
                 app:icon="@drawable/icon_min" />
 
-            <TextView
-                android:id="@+id/ageNumber1"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutHeartNumber"
                 android:layout_width="wrap_content"
+                android:minWidth="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/embed_age_num"
-                android:textSize="20sp" />
+                app:boxStrokeColor="?attr/colorPrimary"
+                app:boxBackgroundMode="outline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/heartRateNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:inputType="number"
+                    android:textSize="22sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/iconPlusButtonStr"
@@ -160,14 +171,25 @@
                 android:contentDescription="@string/image"
                 app:icon="@drawable/icon_min" />
 
-            <TextView
-                android:id="@+id/ageNumber2"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutSystolicNumber"
                 android:layout_width="wrap_content"
+                android:minWidth="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/embed_age_num"
-                android:textSize="20sp" />
+                app:boxStrokeColor="?attr/colorPrimary"
+                app:boxBackgroundMode="outline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/systolicNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:inputType="number"
+                    android:textSize="22sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/iconPlusButton2"
@@ -214,14 +236,25 @@
                 android:contentDescription="@string/image"
                 app:icon="@drawable/icon_min" />
 
-            <TextView
-                android:id="@+id/ageNumber3"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutDiastolicNumber"
                 android:layout_width="wrap_content"
+                android:minWidth="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/embed_age_num"
-                android:textSize="20sp" />
+                app:boxStrokeColor="?attr/colorPrimary"
+                app:boxBackgroundMode="outline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/diastolicNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:inputType="number"
+                    android:textSize="22sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/iconPlusButton3"

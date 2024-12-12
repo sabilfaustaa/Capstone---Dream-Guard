@@ -52,9 +52,8 @@ class ActivityPrediction8 : AppCompatActivity() {
     }
 
     private fun updateStepsDisplay() {
-        binding.ageNumberStr.text = "$dailySteps steps"
+        binding.stepsNumber.setText("$dailySteps steps")
     }
-
     private fun proceedToNextStep() {
         if (dailySteps < 0 || dailySteps > 50000) {
             println("Invalid daily steps value")
