@@ -87,12 +87,57 @@ class RegisterActivity : AppCompatActivity() {
 
                 val token = firebaseUser.getIdToken(true).await().token ?: throw Exception("Token retrieval failed")
 
+                Log.d("RegisterActivity", "Firebase Token: $token")
+
                 userPreferences.saveToken(token)
 
                 sendTokenToBackend(name, email, firebaseUser.uid, token)
             } catch (e: Exception) {
                 showLoading(false)
                 showSnackbar("Error: ${e.message}")
+                Log.e("RegisterActivity", "Error during registration: ${e.message}")
+            }
+        }
+    }
+
+    private fun sendTokenToBackend(name: String, email: String, uid: String, token: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    authRepository.registerNewUser(token, email, name)
+                }
+
+                if (response.isSuccessful) {
+                    val userProfile = response.body() as? UserProfile ?: UserProfile(
+                        uid = uid,
+                        email = email,
+                        name = name,
+                        age = null,
+                        gender = null,
+                        occupation = null,
+                        sleepGoal = null,
+                        profilePicture = null,
+                        createdAt = ""
+                    )
+
+                    Log.d("RegisterActivity", "Backend Response: ${response.body()}")
+
+                    userPreferences.saveUserProfile(userProfile)
+                    userPreferences.saveToken(token)
+
+                    showSnackbar("Registration successful!")
+                    showLoading(false)
+                    navigateToMain()
+                } else {
+                    val errorBody = response.errorBody()?.string() ?: "Unknown error"
+                    showLoading(false)
+                    showSnackbar("Registration failed: $errorBody")
+                    Log.e("RegisterActivity", "Backend Error: $errorBody")
+                }
+            } catch (e: Exception) {
+                showLoading(false)
+                showSnackbar("Error: ${e.message}")
+                Log.e("RegisterActivity", "Error sending token to backend: ${e.message}")
             }
         }
     }
@@ -129,6 +174,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (signInMethods.signInMethods?.isNotEmpty() == true) {
                     showLoading(false)
                     showSnackbar("This account is already registered. Redirecting to login.")
+                    Log.d("RegisterActivity", "This account is already registered. Redirecting to login.")
                     navigateToLogin()
                     return@launch
                 }
@@ -137,46 +183,9 @@ class RegisterActivity : AppCompatActivity() {
                 val firebaseUser = authResult.user ?: throw Exception("Registration failed")
 
                 val token = firebaseUser.getIdToken(true).await().token ?: throw Exception("Token retrieval failed")
+                userPreferences.saveToken(token)
 
                 sendTokenToBackend(account.displayName ?: "Unknown", account.email ?: "", firebaseUser.uid, token)
-            } catch (e: Exception) {
-                showLoading(false)
-                showSnackbar("Error: ${e.message}")
-            }
-        }
-    }
-
-
-    private fun sendTokenToBackend(name: String, email: String, uid: String, token: String) {
-        CoroutineScope(Dispatchers.Main).launch {
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    authRepository.registerNewUser(token, email, name)
-                }
-
-                if (response.isSuccessful) {
-                    val userProfile = response.body() as? UserProfile ?: UserProfile(
-                        uid = uid,
-                        email = email,
-                        name = name,
-                        age = null,
-                        gender = null,
-                        occupation = null,
-                        sleepGoal = null,
-                        profilePicture = null,
-                        createdAt = ""
-                    )
-
-                    userPreferences.saveUserProfile(userProfile)
-                    userPreferences.saveToken(token)
-
-                    showSnackbar("Registration successful!")
-                    showLoading(false)
-                    navigateToMain()
-                } else {
-                    showLoading(false)
-                    showSnackbar("Registration failed: ${response.message()}")
-                }
             } catch (e: Exception) {
                 showLoading(false)
                 showSnackbar("Error: ${e.message}")

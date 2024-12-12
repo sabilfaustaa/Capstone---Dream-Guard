@@ -33,7 +33,7 @@ class SleepScheduleViewModel(private val context: Context) : ViewModel() {
                     val schedules = response.body()?.data ?: emptyList()
                     _sleepSchedules.value = schedules
                 } else {
-                    _errorMessage.value = "Failed to fetch schedules: ${response.message()}"
+//                    _errorMessage.value = "Failed to fetch schedules: ${response.message()}"
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "Error: ${e.message}"
@@ -53,7 +53,7 @@ class SleepScheduleViewModel(private val context: Context) : ViewModel() {
                 if (response.isSuccessful) {
                     _sleepGoal.value = response.body()?.sleepGoal ?: "N/A"
                 } else {
-                    _errorMessage.value = "Failed to fetch sleep goal: ${response.message()}"
+//                    _errorMessage.value = "Failed to fetch sleep goal: ${response.message()}"
                 }
             } catch (e: Exception) {
                 _errorMessage.value = e.localizedMessage

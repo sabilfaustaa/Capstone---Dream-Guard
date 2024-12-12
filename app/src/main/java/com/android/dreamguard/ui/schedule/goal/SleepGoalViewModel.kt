@@ -30,7 +30,7 @@ class SleepGoalViewModel(private val context: Context) : ViewModel() {
                     val minutes = sleepGoal?.getOrNull(1)?.replace("m", "")?.toIntOrNull() ?: 0
                     _sleepGoal.value = Pair(hours, minutes)
                 } else {
-                    _errorMessage.value = "Failed to fetch sleep goal: ${response.message()}"
+//                    _errorMessage.value = "Failed to fetch sleep goal: ${response.message()}"
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "Error: ${e.localizedMessage}"
@@ -49,7 +49,7 @@ class SleepGoalViewModel(private val context: Context) : ViewModel() {
                     _sleepGoal.value = Pair(hours, minutes)
                 } else {
                     _updateSuccess.value = false
-                    _errorMessage.value = "Failed to update sleep goal: ${response.message()}"
+//                    _errorMessage.value = "Failed to update sleep goal: ${response.message()}"
                 }
             } catch (e: Exception) {
                 _updateSuccess.value = false

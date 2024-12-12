@@ -3,6 +3,7 @@ package com.android.dreamguard.ui.schedule.list
 import android.app.AlarmManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -51,6 +52,11 @@ class SleepSchedulerActivity : AppCompatActivity() {
             }
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+            }
+        }
 
         setupRecyclerView()
         setupObservers()
@@ -83,7 +89,7 @@ class SleepSchedulerActivity : AppCompatActivity() {
             if (result != null) {
                 adapter.updateData(result)
             } else {
-                Toast.makeText(this, "Failed to fetch schedules", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Failed to fetch schedules", Toast.LENGTH_SHORT).show()
             }
         }
 
