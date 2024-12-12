@@ -30,6 +30,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolbar.setNavigationOnClickListener {
+            navigateToOnBoarding()
+        }
+
         isFirstLaunch = checkFirstLaunch()
         setupGoogleSignIn()
         setupListeners()
@@ -136,6 +140,11 @@ class LoginActivity : AppCompatActivity() {
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    private fun navigateToOnBoarding() {
+        val intent = Intent(this, OnboardingActivity::class.java)
         startActivity(intent)
     }
 

@@ -1,10 +1,13 @@
 package com.android.dreamguard.ui.changepassword
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.android.dreamguard.data.remote.api.ApiConfig
 import com.android.dreamguard.data.repository.AuthRepository
+import com.android.dreamguard.ui.home.HomeActivity
+import com.android.dreamguard.ui.settings.ActivitySettings
 import com.capstone.dreamguard.databinding.ActivityChangePasswordBinding
 import com.capstone.dreamguard.R
 import com.google.android.material.snackbar.Snackbar
@@ -21,6 +24,10 @@ class ChangePasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChangePasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.toolbar.setNavigationOnClickListener {
+            navigateToHome()
+        }
 
         binding.changePasswordButon.setOnClickListener {
             val currentPassword = binding.currentEditText.text.toString()
@@ -48,5 +55,12 @@ class ChangePasswordActivity : AppCompatActivity() {
 
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(this, ActivitySettings::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }

@@ -1,5 +1,6 @@
 package com.android.dreamguard.ui.feedback
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -7,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.dreamguard.R
 import com.android.dreamguard.data.remote.api.ApiConfig
 import com.android.dreamguard.data.repository.FeedbackRepository
+import com.android.dreamguard.ui.home.HomeActivity
+import com.android.dreamguard.ui.settings.ActivitySettings
 import com.capstone.dreamguard.databinding.ActivityFeedbackBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -20,6 +23,10 @@ class FeedbackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFeedbackBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.toolbar.setNavigationOnClickListener {
+            navigateToHome()
+        }
 
         setupListeners()
         observeViewModel()
@@ -61,5 +68,12 @@ class FeedbackActivity : AppCompatActivity() {
 
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(this, ActivitySettings::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }
